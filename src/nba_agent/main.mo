@@ -13,7 +13,7 @@ import Blob "mo:base/Blob";
 import Nat64 "mo:base/Nat64";
 import ExperimentalCycles "mo:base/ExperimentalCycles";
 
-actor NBAAgent {
+persistent actor NBAAgent {
 
   type Prop = {
     player       : Text;

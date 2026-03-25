@@ -1,0 +1,6 @@
+// Version: 1.0.0
+actor {
+  stable var last_slip_json : Text;
+  stable var registered_on_agentforge : Bool;
+  stable var total_slips_generated : Nat
+};
