@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "canisters": {
+    "nba_agent": {
+      "type": "motoko",
+      "main": "src/nba_agent/main.mo"
+    }
+  },
+  "networks": {
+    "ic": {
+      "providers": ["https://ic0.app"],
+      "type": "persistent"
+    },
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  }
+}
