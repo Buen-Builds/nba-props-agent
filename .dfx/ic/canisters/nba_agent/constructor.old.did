@@ -1,10 +1,13 @@
 service : {
+  fetch_injuries: () -> (text);
   get_agent_stats: () -> (text) query;
   get_best_4_pick: () -> (text);
   get_best_5_pick: () -> (text);
   get_best_6_pick: () -> (text);
   get_best_slip: (n: nat) -> (text);
+  get_injury_cache: () -> (text) query;
   get_last_slip: () -> (text) query;
   get_ranked_props: () -> (text) query;
+  refresh_data: () -> (text);
   register_on_agentforge: () -> (text);
 }
