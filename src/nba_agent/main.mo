@@ -5,171 +5,212 @@ import Float "mo:base/Float";
 import Array "mo:base/Array";
 import Buffer "mo:base/Buffer";
 import Iter "mo:base/Iter";
-import Principal "mo:base/Principal";
-import Time "mo:base/Time";
-import Debug "mo:base/Debug";
 import Error "mo:base/Error";
-import Blob "mo:base/Blob";
-import Nat64 "mo:base/Nat64";
-import ExperimentalCycles "mo:base/ExperimentalCycles";
 
 persistent actor NBAAgent {
 
-  type Prop = {
-    player       : Text;
-    team         : Text;
-    stat         : Text;
-    line         : Float;
-    direction    : Text;
-    avg          : Float;
-    edge         : Float;
-    hit_rate     : Float;
-    blowout_risk : Float;
-    role_score   : Float;
-    confidence   : Float;
-    game         : Text;
-    game_time    : Text;
-    odds         : Int;
-  };
+  var registered  : Bool = false;
+  var last_slip   : Text = "";
+  var total_slips : Nat  = 0;
 
-  stable var registered_on_agentforge : Bool = false;
-  stable var last_slip_json           : Text = "";
-  stable var total_slips_generated    : Nat  = 0;
-
-  type RegistryActor = actor {
-    register : (Text, Text, [Text], Nat) -> async Text;
-  };
-
-  type MemoryActor = actor {
-    set : (Text, Text) -> async ();
-    get : (Text) -> async ?Text;
-  };
-
-  func memory() : MemoryActor {
-    actor("hupoq-3aaaa-aaaas-qf4tq-cai")
-  };
+  type RegActor = actor { register: (Text, Text, [Text], Nat) -> async Text };
+  type MemActor = actor { set: (Text, Text) -> async (); get: (Text) -> async ?Text };
+  func mem() : MemActor { actor("hupoq-3aaaa-aaaas-qf4tq-cai") };
 
   public func register_on_agentforge() : async Text {
-    let registry : RegistryActor = actor("h2ndy-aqaaa-aaaas-qf4sq-cai");
+    let r : RegActor = actor("h2ndy-aqaaa-aaaas-qf4sq-cai");
     try {
-      let result = await registry.register(
+      let res = await r.register(
         "NBA Props Agent",
-        "Autonomous NBA player prop analysis. Fetches live stats and outputs ranked PrizePicks power play slips with confidence scores.",
-        ["nba", "sports-betting", "prizepicks", "props-analysis"],
+        "Ranked PrizePicks power play slips. Specialises in RA and PRA combos. Avoids assists-only, rookies, and DNP risks.",
+        ["nba","prizepicks","PRA","RA","props-analysis"],
         50_000_000
       );
-      registered_on_agentforge := true;
-      "Registered on AgentForge: " # result
-    } catch (e) {
-      "Registration error: " # Error.message(e)
-    }
+      registered := true;
+      "Registered: " # res
+    } catch(e) { "Error: " # Error.message(e) }
   };
 
-  public func store_slip(slip_json: Text) : async () {
-    let mem = memory();
-    await mem.set("slip:latest", slip_json);
-    last_slip_json := slip_json;
+  type Prop = {
+    player: Text; team: Text; stat: Text;
+    line: Float; direction: Text; avg: Float;
+    edge: Float; hit_rate: Float; blowout_risk: Float;
+    confidence: Float; game: Text; game_time: Text;
+    odds: Int; stat_type: Text; is_rookie: Bool;
+    edge_pct: Float;
   };
 
-  public func get_stored_slip() : async ?Text {
-    let mem = memory();
-    await mem.get("slip:latest")
+  func stat_bonus(stat: Text) : Float {
+    if (Text.contains(stat, #text "PRA"))            { 1.30 }
+    else if (Text.contains(stat, #text "Rebs+Asts")) { 1.28 }
+    else if (Text.contains(stat, #text "Pts+Rebs"))  { 1.20 }
+    else if (Text.contains(stat, #text "Rebounds"))  { 1.18 }
+    else if (Text.contains(stat, #text "Points"))    { 1.05 }
+    else if (Text.contains(stat, #text "Dunks"))     { 1.10 }
+    else if (Text.contains(stat, #text "2PT"))       { 1.05 }
+    else if (Text.contains(stat, #text "3PTM"))      { 0.90 }
+    else if (Text.contains(stat, #text "FTM"))       { 0.80 }
+    else if (Text.contains(stat, #text "Steals"))    { 0.75 }
+    else if (Text.contains(stat, #text "Assists"))   { 0.65 }
+    else { 1.0 }
   };
 
-  func score(hit_rate: Float, edge: Float, role: Float, blowout: Float, odds: Int) : Float {
-    let edge_norm  = Float.min(edge / 5.0, 1.0);
-    let odds_score = if (odds <= -500) { 1.0 }
-                     else if (odds <= -300) { 0.7 }
-                     else { 0.4 };
-    (hit_rate * 0.35) + (edge_norm * 0.25) + (role * 0.20) +
-    ((1.0 - blowout) * 0.15) + (odds_score * 0.05)
+  func score(h: Float, e: Float, ep: Float, b: Float, o: Int, stat: Text, rookie: Bool) : Float {
+    let en   = Float.min(e / 5.0, 1.0);
+    let epn  = Float.min(ep / 0.5, 1.0);
+    let os   = if (o <= -500) { 1.0 } else if (o <= -300) { 0.7 } else { 0.4 };
+    let sb   = stat_bonus(stat);
+    let rook = if (rookie) { 0.60 } else { 1.0 };
+    let raw  = h * 0.30 + en * 0.20 + epn * 0.20 + 1.0 * 0.15 + (1.0 - b) * 0.10 + os * 0.05;
+    Float.min(raw * sb * rook, 1.0)
+  };
+
+  func classify(stat: Text) : Text {
+    if (Text.contains(stat, #text "PRA"))            { "PRA" }
+    else if (Text.contains(stat, #text "Rebs+Asts")) { "RA" }
+    else if (Text.contains(stat, #text "Pts+Rebs"))  { "PR" }
+    else if (Text.contains(stat, #text "Rebounds"))  { "REB" }
+    else if (Text.contains(stat, #text "Points"))    { "PTS" }
+    else { "OTHER" }
   };
 
   func load_props() : [Prop] {
-    let raw : [(Text,Text,Text,Float,Float,Float,Float,Int,Text,Text)] = [
-      ("Rudy Gobert",        "MIN", "FTM",          1.5, 4.5, 0.95, 0.25, -600, "MIN vs HOU", "6:30pm"),
-      ("Rudy Gobert",        "MIN", "Blks+Stls",    1.5, 2.4, 0.92, 0.25, -600, "MIN vs HOU", "6:30pm"),
-      ("Rudy Gobert",        "MIN", "Def Rebounds", 7.5, 9.8, 0.85, 0.25, -600, "MIN vs HOU", "6:30pm"),
-      ("Rudy Gobert",        "MIN", "2PT Att",      7.5, 9.2, 0.82, 0.25, -600, "MIN vs HOU", "6:30pm"),
-      ("Neemias Queta",      "BOS", "Steals",       0.5, 0.8, 0.88, 0.10, -500, "OKC @ BOS",  "4:30pm"),
-      ("Neemias Queta",      "BOS", "Blks+Stls",    1.5, 2.1, 0.85, 0.10, -500, "OKC @ BOS",  "4:30pm"),
-      ("Neemias Queta",      "BOS", "Off Rebounds", 3.0, 3.5, 0.80, 0.10, -500, "OKC @ BOS",  "4:30pm"),
-      ("Jay Huff",           "IND", "Dunks",        0.5, 2.2, 0.87, 0.30, -500, "LAL @ IND",  "4:00pm"),
-      ("Jay Huff",           "IND", "2PT Att",      3.5, 5.8, 0.82, 0.30, -500, "LAL @ IND",  "4:00pm"),
-      ("Jay Huff",           "IND", "Rebs+Asts",    5.5, 5.8, 0.72, 0.35, -450, "LAL @ IND",  "4:00pm"),
-      ("Derrick White",      "BOS", "3PTM",         1.5, 3.1, 0.83, 0.10, -500, "OKC @ BOS",  "4:30pm"),
-      ("Derrick White",      "BOS", "FTM",          1.5, 2.8, 0.78, 0.10, -450, "OKC @ BOS",  "4:30pm"),
-      ("Kristaps Porzingis", "GSW", "PRA",         26.5,34.0, 0.75, 0.20, -500, "BKN @ GSW",  "7:00pm")
+    let data : [(Text,Text,Text,Float,Float,Float,Float,Int,Text,Text,Bool)] = [
+      ("Nikola Jokic",       "DEN","PRA",           24.5,51.3,0.95,0.15,-620,"DEN vs DAL", "7:00pm",false),
+      ("Neemias Queta",      "BOS","Rebs+Asts",      7.5,13.4,0.92,0.10,-500,"OKC @ BOS",  "4:30pm",false),
+      ("Donovan Clingan",    "POR","Rebs+Asts",     14.5,18.2,0.90,0.20,-500,"POR vs MIL", "7:00pm",false),
+      ("Evan Mobley",        "CLE","Rebs+Asts",     12.5,15.8,0.90,0.15,-500,"CLE vs MIA", "4:30pm",false),
+      ("Josh Giddey",        "CHI","Rebs+Asts",     14.5,17.8,0.88,0.25,-500,"CHI vs PHI", "4:00pm",false),
+      ("Deni Avdija",        "POR","Rebs+Asts",     11.5,14.8,0.88,0.20,-500,"POR vs MIL", "7:00pm",false),
+      ("Isaiah Hartenstein", "OKC","Rebs+Asts",      7.5,13.4,0.91,0.10,-650,"OKC @ BOS",  "4:30pm",false),
+      ("SGA",                "OKC","Rebs+Asts",      7.5, 9.8,0.90,0.10,-650,"OKC @ BOS",  "4:30pm",false),
+      ("Jaylen Brown",       "BOS","Rebs+Asts",      9.5,11.2,0.88,0.10,-500,"OKC @ BOS",  "4:30pm",false),
+      ("Jayson Tatum",       "BOS","Rebounds",       6.5, 8.6,0.88,0.10,-500,"OKC @ BOS",  "4:30pm",false),
+      ("LeBron James",       "LAL","Rebs+Asts",      9.5,12.6,0.90,0.20,-596,"LAL vs BKN", "7:30pm",false),
+      ("LeBron James",       "LAL","PRA",           24.5,33.7,0.90,0.20,-596,"LAL vs BKN", "7:30pm",false),
+      ("Austin Reaves",      "LAL","Rebs+Asts",      8.5,10.8,0.87,0.20,-500,"LAL vs BKN", "7:30pm",false),
+      ("Luka Doncic",        "LAL","Points",        30.5,33.4,0.85,0.20,-500,"LAL vs BKN", "7:30pm",false),
+      ("Pascal Siakam",      "IND","Rebounds",       3.5, 6.6,0.94,0.30,-550,"IND vs CHO", "4:00pm",false),
+      ("Nic Claxton",        "BKN","Rebounds",       3.5, 7.1,0.93,0.25,-600,"LAL vs BKN", "7:30pm",false),
+      ("Andrew Wiggins",     "MIA","Pts+Rebs",      11.5,16.8,0.93,0.20,-650,"MIA vs CLE", "4:30pm",false),
+      ("CJ McCollum",        "ATL","Rebs+Asts",      6.5, 8.4,0.87,0.20,-500,"BOS vs ATL", "4:30pm",false),
+      ("Andrew Nembhard",    "IND","Rebs+Asts",     10.5,13.1,0.87,0.25,-500,"IND vs CHO", "4:00pm",false),
+      ("Matas Buzelis",      "CHI","PRA",           19.5,24.1,0.85,0.25,-500,"CHI vs PHI", "4:00pm",false),
+      ("Derrick Jones Jr",   "LAC","Rebs+Asts",      5.5, 7.2,0.86,0.20,-500,"LAC vs UTA", "9:00pm",false),
+      ("Rudy Gobert",        "MIN","Rebs+Asts",      8.5,13.1,0.88,0.25,-600,"MIN vs HOU", "6:30pm",false),
+      ("Kawhi Leonard",      "LAC","Points",        19.5,28.2,0.85,0.20,-550,"LAC vs UTA", "9:00pm",false),
+      ("Derrick White",      "BOS","Pts+Rebs",      14.5,21.8,0.82,0.10,-500,"OKC @ BOS",  "4:30pm",false),
+      ("Jay Huff",           "IND","Dunks",          0.5, 2.2,0.87,0.30,-500,"IND vs CHO", "4:00pm",false),
+      ("Nikola Jokic",       "DEN","Rebs+Asts",     15.5,23.3,0.94,0.15,-620,"DEN vs DAL", "7:00pm",false),
+      ("Joel Embiid",        "PHI","Rebs+Asts",     10.5,13.2,0.85,0.20,-500,"CHI vs PHI", "4:00pm",false),
+      ("Jaime Jaquez",       "MIA","Rebs+Asts",      4.5, 6.8,0.84,0.20,-500,"CLE vs MIA", "4:30pm",false),
+      ("NAW",                "ATL","Points",        11.5,18.2,0.85,0.20,-500,"BOS vs ATL",  "4:30pm",false),
+      ("James Harden",       "CLE","Rebs+Asts",     13.5,13.0,0.82,0.15,-700,"CLE vs MIA", "4:30pm",false)
     ];
-    Array.map<(Text,Text,Text,Float,Float,Float,Float,Int,Text,Text), Prop>(raw, func(r) {
-      let (player,team,stat,line,avg,hit_rate,blowout,odds,game,game_time) = r;
-      let edge = avg - line;
-      {
-        player; team; stat; line; direction="OVER"; avg; edge;
-        hit_rate; blowout_risk=blowout; role_score=1.0;
-        confidence = score(hit_rate, edge, 1.0, blowout, odds);
-        game; game_time; odds
-      }
+    Array.map<(Text,Text,Text,Float,Float,Float,Float,Int,Text,Text,Bool), Prop>(data, func(r) {
+      let (pl,tm,st,ln,av,hr,bl,od,gm,gt,rk) = r;
+      let eg  = av - ln;
+      let ep  = if (ln > 0.0) { eg / ln } else { 0.0 };
+      { player=pl; team=tm; stat=st; line=ln; direction="OVER";
+        avg=av; edge=eg; edge_pct=ep; hit_rate=hr; blowout_risk=bl;
+        confidence=score(hr,eg,ep,bl,od,st,rk);
+        game=gm; game_time=gt; odds=od;
+        stat_type=classify(st); is_rookie=rk }
     })
   };
 
-  func rank(props: [Prop]) : [Prop] {
-    let buf = Buffer.fromArray<Prop>(props);
-    let n = buf.size();
+  func rank_props(ps: [Prop]) : [Prop] {
+    let b = Buffer.fromArray<Prop>(ps);
+    let n = b.size();
     var i = 0;
     while (i < n) {
       var j = 0;
       while (j < n - i - 1) {
-        if (buf.get(j).confidence < buf.get(j+1).confidence) {
-          let tmp = buf.get(j);
-          buf.put(j, buf.get(j+1));
-          buf.put(j+1, tmp);
+        if (b.get(j).confidence < b.get(j+1).confidence) {
+          let tmp = b.get(j);
+          b.put(j, b.get(j+1));
+          b.put(j+1, tmp);
         };
-        j += 1;
+        j := j + 1;
       };
-      i += 1;
+      i := i + 1;
     };
-    Buffer.toArray(buf)
+    Buffer.toArray(b)
   };
 
-  func to_json(props: [Prop]) : Text {
-    let parts = Array.map<Prop,Text>(props, func(p) {
-      "{\"player\":\"" # p.player # "\",\"team\":\"" # p.team #
-      "\",\"stat\":\"" # p.stat # "\",\"line\":" # Float.toText(p.line) #
-      ",\"direction\":\"" # p.direction # "\",\"avg\":" # Float.toText(p.avg) #
-      ",\"edge\":" # Float.toText(p.edge) # ",\"hit_rate\":" # Float.toText(p.hit_rate) #
-      ",\"confidence\":" # Float.toText(p.confidence) #
-      ",\"blowout_risk\":" # Float.toText(p.blowout_risk) #
-      ",\"odds\":" # Int.toText(p.odds) # ",\"game\":\"" # p.game #
-      "\",\"game_time\":\"" # p.game_time # "\"}"
+  func one_per_player(ps: [Prop]) : [Prop] {
+    let seen = Buffer.Buffer<Text>(20);
+    let out  = Buffer.Buffer<Prop>(20);
+    for (p in ps.vals()) {
+      if (not Buffer.contains<Text>(seen, p.player, Text.equal)) {
+        seen.add(p.player);
+        out.add(p);
+      };
+    };
+    Buffer.toArray(out)
+  };
+
+  func is_assists_only(stat: Text) : Bool {
+    let s = Text.toLowercase(stat);
+    Text.contains(s, #text "assist") and
+    not Text.contains(s, #text "reb") and
+    not Text.contains(s, #text "pts") and
+    not Text.contains(s, #text "pra")
+  };
+
+  func to_json(ps: [Prop]) : Text {
+    let parts = Array.map<Prop, Text>(ps, func(p) {
+      "{" #
+      "\"player\":\"" # p.player # "\"," #
+      "\"team\":\"" # p.team # "\"," #
+      "\"stat\":\"" # p.stat # "\"," #
+      "\"stat_type\":\"" # p.stat_type # "\"," #
+      "\"line\":" # Float.toText(p.line) # "," #
+      "\"avg\":" # Float.toText(p.avg) # "," #
+      "\"edge\":" # Float.toText(p.edge) # "," #
+      "\"edge_pct\":" # Float.toText(p.edge_pct) # "," #
+      "\"hit_rate\":" # Float.toText(p.hit_rate) # "," #
+      "\"confidence\":" # Float.toText(p.confidence) # "," #
+      "\"game\":\"" # p.game # "\"," #
+      "\"game_time\":\"" # p.game_time # "\"," #
+      "\"odds\":" # Int.toText(p.odds) # "," #
+      "\"direction\":\"OVER\"" #
+      "}"
     });
     "[" # Text.join(",", Iter.fromArray(parts)) # "]"
   };
 
   public query func get_ranked_props() : async Text {
-    to_json(rank(load_props()))
+    to_json(rank_props(load_props()))
   };
 
   public func get_best_slip(n: Nat) : async Text {
-    let all = rank(load_props());
-    let good = Array.filter<Prop>(all, func(p) { p.edge > 0.0 and p.confidence > 0.70 });
-    let count = Nat.min(n, good.size());
-    let picks = Array.tabulate<Prop>(count, func(i) { good[i] });
-    total_slips_generated += 1;
+    let ranked   = rank_props(load_props());
+    let filtered = Array.filter<Prop>(ranked, func(p) {
+      p.edge > 0.0 and
+      p.confidence > 0.72 and
+      not p.is_rookie and
+      not is_assists_only(p.stat) and
+      p.edge_pct > 0.10
+    });
+    let deduped = one_per_player(filtered);
+    let count   = Nat.min(n, deduped.size());
+    let picks   = Array.tabulate<Prop>(count, func(i) { deduped[i] });
+    total_slips := total_slips + 1;
     let j = to_json(picks);
-    last_slip_json := j;
-    ignore store_slip(j);
+    last_slip := j;
+    ignore mem().set("slip:latest", j);
     j
   };
 
   public func get_best_6_pick() : async Text { await get_best_slip(6) };
   public func get_best_5_pick() : async Text { await get_best_slip(5) };
+  public func get_best_4_pick() : async Text { await get_best_slip(4) };
 
   public query func get_agent_stats() : async Text {
-    "{\"total_slips\":" # Nat.toText(total_slips_generated) #
-    ",\"registered\":" # (if registered_on_agentforge { "true" } else { "false" }) # "}"
+    "{"total_slips":" # Nat.toText(total_slips) #
+    ","registered":" # (if registered { "true" } else { "false" }) # "}"
   };
 
-  public query func get_last_slip() : async Text { last_slip_json };
-
+  public query func get_last_slip() : async Text { last_slip };
 };
