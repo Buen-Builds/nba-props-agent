@@ -1,5 +1,33 @@
 // Version: 1.0.0
+type HttpHeader__564685771 = {name : Text; value : Text};
+type HttpRequest__71017672 =
+  {
+    body : ?Blob;
+    headers : [HttpHeader__564685771];
+    max_response_bytes : ?Nat64;
+    method : {#get};
+    transform :
+      ?{
+         context : Blob;
+         function :
+           shared query {context : Blob; response : HttpResponse__242452579} ->
+             async HttpResponse__242452579
+       };
+    url : Text
+  };
+type HttpResponse__242452579 =
+  {body : Blob; headers : [HttpHeader__564685771]; status : Nat};
 actor {
+  stable RAPIDAPI_KEY : Text;
+  stable TANK_HOST : Text;
+  stable _timer : Nat;
+  stable var fetch_count : Nat;
+  stable ic :
+    actor {
+      http_request :
+        shared HttpRequest__71017672 -> async HttpResponse__242452579
+    };
+  stable var injury_cache : Text;
   stable var last_slip : Text;
   stable var registered : Bool;
   stable var total_slips : Nat
