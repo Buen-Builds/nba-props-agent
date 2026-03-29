@@ -17,22 +17,18 @@ persistent actor NBAAgent {
   var total_slips  : Nat  = 0;
   var injury_cache : Text = "";
   var fetch_count  : Nat  = 0;
+  var live_props   : Text = "";
 
   let RAPIDAPI_KEY = "44159ba4cemsh8d61c5958b50bdcp160e6ejsn842ac4627557";
   let TANK_HOST    = "tank01-fantasy-stats.p.rapidapi.com";
+  let WORKER_URL   = "https://prizepicks-proxy.crisbuen.workers.dev/props";
 
   type HttpHeader   = { name: Text; value: Text };
   type HttpResponse = { status: Nat; headers: [HttpHeader]; body: Blob };
   type HttpRequest  = {
-    url: Text;
-    method: { #get };
-    headers: [HttpHeader];
-    body: ?Blob;
-    max_response_bytes: ?Nat64;
-    transform: ?{
-      function: shared query ({ response: HttpResponse; context: Blob }) -> async HttpResponse;
-      context: Blob
-    };
+    url: Text; method: { #get }; headers: [HttpHeader];
+    body: ?Blob; max_response_bytes: ?Nat64;
+    transform: ?{ function: shared query ({ response: HttpResponse; context: Blob }) -> async HttpResponse; context: Blob };
   };
   type IC = actor { http_request: HttpRequest -> async HttpResponse };
   let ic : IC = actor("aaaaa-aa");
@@ -46,9 +42,8 @@ persistent actor NBAAgent {
     try {
       let res = await r.register(
         "NBA Props Agent",
-        "Live autonomous NBA props. RA and PRA combos. Real injury data. 60s timer.",
-        ["nba", "prizepicks", "PRA", "RA"],
-        50_000_000
+        "Live autonomous NBA props. Pulls real PrizePicks lines. RA and PRA combos.",
+        ["nba", "prizepicks", "PRA", "RA"], 50_000_000
       );
       registered := true;
       "Registered: " # res
@@ -104,27 +99,56 @@ persistent actor NBAAgent {
   };
 
   func load_props() : [Prop] {[
-    mp("Jaren Jackson Jr",      "MEM", "Rebs+Asts",   8.5, 12.1, 0.87, 0.25, -500, "CHI @ MEM",  "6:00pm"),
-    mp("Desmond Bane",          "MEM", "Rebs+Asts",   5.5,  8.2, 0.86, 0.25, -500, "CHI @ MEM",  "6:00pm"),
-    mp("Josh Giddey",           "CHI", "Rebs+Asts",  14.5, 17.8, 0.88, 0.25, -500, "CHI @ MEM",  "6:00pm"),
-    mp("Matas Buzelis",         "CHI", "PRA",         19.5, 24.1, 0.85, 0.25, -500, "CHI @ MEM",  "6:00pm"),
-    mp("Zach LaVine",           "CHI", "Points",      22.5, 26.8, 0.84, 0.25, -500, "CHI @ MEM",  "6:00pm"),
-    mp("Kevin Durant",          "PHX", "Rebs+Asts",   8.5, 11.4, 0.88, 0.20, -500, "UTA @ PHX",  "8:00pm"),
-    mp("Devin Booker",          "PHX", "Points",      26.5, 29.4, 0.85, 0.20, -500, "UTA @ PHX",  "8:00pm"),
-    mp("Lauri Markkanen",       "UTA", "Rebs+Asts",   8.5, 11.8, 0.86, 0.30, -500, "UTA @ PHX",  "8:00pm"),
-    mp("Jordan Clarkson",       "UTA", "Points",      19.5, 22.4, 0.83, 0.30, -500, "UTA @ PHX",  "8:00pm"),
-    mp("Bradley Beal",          "PHX", "Rebs+Asts",   5.5,  8.1, 0.84, 0.20, -500, "UTA @ PHX",  "8:00pm"),
-    mp("Shai Gilgeous-Alexander","OKC","Rebs+Asts",   7.5,  9.8, 0.90, 0.10, -650, "NYK @ OKC",  "8:00pm"),
-    mp("Shai Gilgeous-Alexander","OKC","Points",      30.5, 33.2, 0.88, 0.10, -650, "NYK @ OKC",  "8:00pm"),
-    mp("Isaiah Hartenstein",    "OKC", "Rebs+Asts",   7.5, 13.4, 0.91, 0.10, -650, "NYK @ OKC",  "8:00pm"),
-    mp("Jalen Williams",        "OKC", "Rebs+Asts",   7.5, 10.2, 0.87, 0.10, -650, "NYK @ OKC",  "8:00pm"),
-    mp("Karl-Anthony Towns",    "NYK", "Rebs+Asts",  10.5, 14.2, 0.88, 0.20, -500, "NYK @ OKC",  "8:00pm"),
-    mp("Jalen Brunson",         "NYK", "Rebs+Asts",   7.5, 10.1, 0.86, 0.20, -500, "NYK @ OKC",  "8:00pm"),
-    mp("OG Anunoby",            "NYK", "Rebs+Asts",   6.5,  9.2, 0.85, 0.20, -500, "NYK @ OKC",  "8:00pm"),
-    mp("Mikal Bridges",         "NYK", "Rebs+Asts",   5.5,  8.1, 0.84, 0.20, -500, "NYK @ OKC",  "8:00pm"),
-    mp("Lu Dort",               "OKC", "Points",      14.5, 17.8, 0.84, 0.10, -650, "NYK @ OKC",  "8:00pm"),
-    mp("Chet Holmgren",         "OKC", "Rebs+Asts",   8.5, 11.6, 0.86, 0.10, -650, "NYK @ OKC",  "8:00pm")
+    mp("Nikola Jokic",            "DEN", "PRA",        50.5, 58.2, 0.88, 0.15, -620, "DEN @ GSW",  "8:30pm"),
+    mp("Shai Gilgeous-Alexander", "OKC", "PRA",        40.5, 45.1, 0.85, 0.10, -650, "NYK @ OKC",  "7:00pm"),
+    mp("Jayson Tatum",            "BOS", "PRA",        42.5, 47.8, 0.85, 0.10, -500, "BOS @ MIA",  "6:00pm"),
+    mp("Deni Avdija",             "POR", "PRA",        40.5, 46.2, 0.86, 0.20, -500, "POR @ LAL",  "9:00pm"),
+    mp("Karl-Anthony Towns",      "NYK", "PRA",        30.5, 35.8, 0.87, 0.20, -500, "NYK @ OKC",  "7:00pm"),
+    mp("Jalen Brunson",           "NYK", "PRA",        33.5, 37.2, 0.85, 0.20, -500, "NYK @ OKC",  "7:00pm"),
+    mp("Bam Adebayo",             "MIA", "PRA",        34.5, 38.6, 0.86, 0.20, -500, "BOS @ MIA",  "6:00pm"),
+    mp("Paolo Banchero",          "ORL", "PRA",        37.0, 41.8, 0.85, 0.20, -500, "ORL @ IND",  "6:00pm"),
+    mp("Alperen Sengun",          "HOU", "PRA",        35.0, 39.4, 0.86, 0.20, -500, "HOU @ SAC",  "9:00pm"),
+    mp("Jamal Murray",            "DEN", "PRA",        34.5, 38.2, 0.84, 0.15, -620, "DEN @ GSW",  "8:30pm"),
+    mp("LaMelo Ball",             "CHA", "PRA",        31.5, 35.6, 0.84, 0.25, -500, "CHA @ ATL",  "6:00pm"),
+    mp("Brandon Ingram",          "NOP", "PRA",        31.5, 35.2, 0.84, 0.25, -500, "NOP @ MEM",  "6:00pm"),
+    mp("Scottie Barnes",          "TOR", "PRA",        32.5, 36.4, 0.84, 0.25, -500, "TOR @ DET",  "6:00pm"),
+    mp("Donovan Clingan",         "POR", "PRA",        32.0, 36.8, 0.85, 0.20, -500, "POR @ LAL",  "9:00pm"),
+    mp("Amen Thompson",           "HOU", "PRA",        32.0, 36.2, 0.84, 0.20, -500, "HOU @ SAC",  "9:00pm"),
+    mp("Kevin Durant",            "PHX", "PRA",        35.5, 39.8, 0.86, 0.20, -500, "PHX @ UTA",  "8:00pm"),
+    mp("Isaiah Hartenstein",      "OKC", "PRA",        19.0, 22.4, 0.88, 0.10, -650, "NYK @ OKC",  "7:00pm"),
+    mp("Neemias Queta",           "BOS", "PRA",        21.5, 25.6, 0.87, 0.10, -500, "BOS @ MIA",  "6:00pm"),
+    mp("Chet Holmgren",           "OKC", "PRA",        24.5, 28.2, 0.85, 0.10, -650, "NYK @ OKC",  "7:00pm"),
+    mp("Jalen Williams",          "OKC", "PRA",        25.5, 29.4, 0.86, 0.10, -650, "NYK @ OKC",  "7:00pm"),
+    mp("OG Anunoby",              "NYK", "PRA",        22.5, 26.2, 0.85, 0.20, -500, "NYK @ OKC",  "7:00pm"),
+    mp("Josh Hart",               "NYK", "PRA",        24.0, 27.8, 0.85, 0.20, -500, "NYK @ OKC",  "7:00pm"),
+    mp("Mikal Bridges",           "NYK", "PRA",        19.0, 22.4, 0.84, 0.20, -500, "NYK @ OKC",  "7:00pm"),
+    mp("Kristaps Porzingis",      "BOS", "PRA",        27.5, 31.8, 0.84, 0.15, -500, "BOS @ MIA",  "6:00pm"),
+    mp("Desmond Bane",            "MEM", "PRA",        29.5, 33.8, 0.84, 0.20, -500, "NOP @ MEM",  "6:00pm"),
+    mp("Andrew Nembhard",         "IND", "PRA",        29.5, 33.2, 0.84, 0.25, -500, "ORL @ IND",  "6:00pm"),
+    mp("Payton Pritchard",        "BOS", "PRA",        29.5, 33.4, 0.84, 0.15, -500, "BOS @ MIA",  "6:00pm"),
+    mp("RJ Barrett",              "TOR", "PRA",        28.5, 32.2, 0.83, 0.25, -500, "TOR @ DET",  "6:00pm"),
+    mp("Darius Garland",          "CLE", "PRA",        28.5, 32.4, 0.84, 0.20, -500, "CLE @ CHI",  "7:00pm"),
+    mp("Dejounte Murray",         "NOP", "PRA",        27.5, 31.2, 0.83, 0.25, -500, "NOP @ MEM",  "6:00pm")
   ]};
+
+  public func fetch_live_props() : async Text {
+    ExperimentalCycles.add(230_949_972_000);
+    try {
+      let res = await ic.http_request({
+        url = WORKER_URL;
+        method = #get;
+        max_response_bytes = ?Nat64.fromNat(200_000);
+        headers = [{ name = "Accept"; value = "application/json" }];
+        body = null; transform = null;
+      });
+      let txt = switch (Text.decodeUtf8(res.body)) {
+        case (?t) { t }; case null { "" };
+      };
+      live_props := txt;
+      fetch_count := fetch_count + 1;
+      "Fetched: " # Nat.toText(txt.size()) # " chars"
+    } catch(e) { "fetch error: " # Error.message(e) }
+  };
 
   public func fetch_injuries() : async Text {
     ExperimentalCycles.add(230_949_972_000);
@@ -134,20 +158,17 @@ persistent actor NBAAgent {
         method = #get;
         max_response_bytes = ?Nat64.fromNat(50_000);
         headers = [
-          { name = "x-rapidapi-key";  value = RAPIDAPI_KEY },
+          { name = "x-rapidapi-key"; value = RAPIDAPI_KEY },
           { name = "x-rapidapi-host"; value = TANK_HOST }
         ];
-        body = null;
-        transform = null;
+        body = null; transform = null;
       });
       let txt = switch (Text.decodeUtf8(res.body)) {
-        case (?t) { t };
-        case null { "" };
+        case (?t) { t }; case null { "" };
       };
       injury_cache := txt;
-      fetch_count := fetch_count + 1;
       txt
-    } catch(e) { "injury fetch error: " # Error.message(e) }
+    } catch(e) { "injury error: " # Error.message(e) }
   };
 
   func rank_props(ps: [Prop]) : [Prop] {
@@ -158,9 +179,7 @@ persistent actor NBAAgent {
       var j = 0;
       while (j < n - i - 1) {
         if (b.get(j).confidence < b.get(j+1).confidence) {
-          let tmp = b.get(j);
-          b.put(j, b.get(j+1));
-          b.put(j+1, tmp);
+          let tmp = b.get(j); b.put(j, b.get(j+1)); b.put(j+1, tmp);
         };
         j := j + 1;
       };
@@ -174,8 +193,7 @@ persistent actor NBAAgent {
     let out  = Buffer.Buffer<Prop>(20);
     for (p in ps.vals()) {
       if (not Buffer.contains<Text>(seen, p.player, Text.equal)) {
-        seen.add(p.player);
-        out.add(p);
+        seen.add(p.player); out.add(p);
       };
     };
     Buffer.toArray(out)
@@ -214,12 +232,10 @@ persistent actor NBAAgent {
   };
 
   public func get_best_slip(n: Nat) : async Text {
-    let ranked   = rank_props(load_props());
+    let ranked = rank_props(load_props());
     let filtered = Array.filter<Prop>(ranked, func(p) {
-      p.edge > 0.0 and
-      p.confidence > 0.72 and
-      not assists_only(p.stat) and
-      p.edge_pct > 0.10
+      p.edge > 0.0 and p.confidence > 0.72 and
+      not assists_only(p.stat) and p.edge_pct > 0.10
     });
     let deduped = one_per_player(filtered);
     let count   = Nat.min(n, deduped.size());
@@ -236,13 +252,14 @@ persistent actor NBAAgent {
   public func get_best_4_pick() : async Text { await get_best_slip(4) };
 
   public func refresh_data() : async Text {
-    ignore await fetch_injuries();
+    ignore await fetch_live_props();
     let slip = await get_best_slip(6);
-    "Refreshed. Slip: " # Nat.toText(slip.size()) # " chars"
+    "Refreshed. Slip ready."
   };
 
-  public query func get_injury_cache() : async Text { injury_cache };
-  public query func get_last_slip()    : async Text { last_slip };
+  public query func get_live_props()    : async Text { live_props };
+  public query func get_injury_cache()  : async Text { injury_cache };
+  public query func get_last_slip()     : async Text { last_slip };
 
   public query func get_agent_stats() : async Text {
     "{\"total_slips\":" # Nat.toText(total_slips) #
@@ -251,8 +268,7 @@ persistent actor NBAAgent {
   };
 
   let _timer = Timer.recurringTimer<system>(#seconds(60), func() : async () {
-    ignore await fetch_injuries();
+    ignore await fetch_live_props();
     ignore await get_best_slip(6);
   });
-
 };

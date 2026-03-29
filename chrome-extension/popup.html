@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { width: 320px; font-family: Arial, sans-serif; background: #0f0f0f; color: #fff; margin: 0; padding: 16px; }
+  h2 { color: #9b59b6; margin: 0 0 12px; font-size: 16px; }
+  .status { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 13px; }
+  .btn { width: 100%; padding: 12px; background: #9b59b6; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; margin-bottom: 8px; }
+  .btn:hover { background: #8e44ad; }
+  .btn.secondary { background: #1a1a1a; border: 1px solid #9b59b6; color: #9b59b6; }
+  .props-list { background: #1a1a1a; border-radius: 8px; padding: 8px; max-height: 200px; overflow-y: auto; font-size: 11px; }
+  .prop-item { padding: 4px 0; border-bottom: 1px solid #222; }
+  .prop-item:last-child { border-bottom: none; }
+  .green { color: #2ecc71; }
+  .purple { color: #9b59b6; }
+  .canister { font-size: 10px; color: #666; margin-top: 8px; word-break: break-all; }
+</style>
+</head>
+<body>
+<h2>AgentForge NBA Agent</h2>
+<div class="status" id="status">Open PrizePicks NBA tab to begin</div>
+<button class="btn" id="scrapeBtn">Scrape Live Lines</button>
+<button class="btn secondary" id="sendBtn" style="display:none">Send to Canister</button>
+<div id="propsList"></div>
+<div class="canister">Canister: p6ttk-lyaaa-aaaah-avb2q-cai</div>
+<script src="popup.js"></script>
+</body>
+</html>

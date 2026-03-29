@@ -4,6 +4,7 @@ import type { IDL } from '@icp-sdk/core/candid';
 
 export interface _SERVICE {
   'fetch_injuries' : ActorMethod<[], string>,
+  'fetch_live_props' : ActorMethod<[], string>,
   'get_agent_stats' : ActorMethod<[], string>,
   'get_best_4_pick' : ActorMethod<[], string>,
   'get_best_5_pick' : ActorMethod<[], string>,
@@ -11,6 +12,7 @@ export interface _SERVICE {
   'get_best_slip' : ActorMethod<[bigint], string>,
   'get_injury_cache' : ActorMethod<[], string>,
   'get_last_slip' : ActorMethod<[], string>,
+  'get_live_props' : ActorMethod<[], string>,
   'get_ranked_props' : ActorMethod<[], string>,
   'refresh_data' : ActorMethod<[], string>,
   'register_on_agentforge' : ActorMethod<[], string>,

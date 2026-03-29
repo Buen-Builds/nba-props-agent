@@ -20,6 +20,7 @@ type HttpResponse__242452579 =
 actor {
   stable RAPIDAPI_KEY : Text;
   stable TANK_HOST : Text;
+  stable WORKER_URL : Text;
   stable _timer : Nat;
   stable var fetch_count : Nat;
   stable ic :
@@ -29,6 +30,7 @@ actor {
     };
   stable var injury_cache : Text;
   stable var last_slip : Text;
+  stable var live_props : Text;
   stable var registered : Bool;
   stable var total_slips : Nat
 };

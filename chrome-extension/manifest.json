@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "AgentForge PrizePicks Scraper",
+  "version": "1.0",
+  "description": "Sends live PrizePicks NBA lines to your AgentForge NBA canister",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://app.prizepicks.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [{
+    "matches": ["https://app.prizepicks.com/*"],
+    "js": ["content.js"]
+  }]
+}
