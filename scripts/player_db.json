@@ -1,0 +1,1046 @@
+{
+  "Tyrese Maxey": {
+    "team": "PHI",
+    "avg_pts": 32.6,
+    "home_pts": 32.8,
+    "away_pts": 32.4,
+    "games": 36,
+    "consistency": 0.72,
+    "home_boost": 0.011
+  },
+  "Valdez Edgecombe": {
+    "team": "PHI",
+    "avg_pts": 25.8,
+    "home_pts": 35.0,
+    "away_pts": 23.5,
+    "games": 5,
+    "consistency": 0.2,
+    "home_boost": 0.446
+  },
+  "Devin Booker": {
+    "team": "PHX",
+    "avg_pts": 30.8,
+    "home_pts": 30.5,
+    "away_pts": 31.1,
+    "games": 29,
+    "consistency": 0.76,
+    "home_boost": -0.017
+  },
+  "Saddiq Bey": {
+    "team": "NOP",
+    "avg_pts": 26.8,
+    "home_pts": 24.0,
+    "away_pts": 29.6,
+    "games": 10,
+    "consistency": 0.6,
+    "home_boost": -0.209
+  },
+  "Moses Moody": {
+    "team": "GSW",
+    "avg_pts": 25.3,
+    "home_pts": 19.0,
+    "away_pts": 28.5,
+    "games": 3,
+    "consistency": 0.33,
+    "home_boost": -0.375
+  },
+  "Norman Powell": {
+    "team": "MIA",
+    "avg_pts": 28.2,
+    "home_pts": 26.3,
+    "away_pts": 32.0,
+    "games": 9,
+    "consistency": 0.67,
+    "home_boost": -0.201
+  },
+  "Kel'el Ware": {
+    "team": "MIA",
+    "avg_pts": 23.2,
+    "home_pts": 23.5,
+    "away_pts": 23.0,
+    "games": 4,
+    "consistency": 0.5,
+    "home_boost": 0.022
+  },
+  "Alperen Sengun": {
+    "team": "HOU",
+    "avg_pts": 30.2,
+    "home_pts": 27.0,
+    "away_pts": 31.6,
+    "games": 13,
+    "consistency": 0.77,
+    "home_boost": -0.151
+  },
+  "Cade Cunningham": {
+    "team": "DET",
+    "avg_pts": 29.3,
+    "home_pts": 30.2,
+    "away_pts": 28.8,
+    "games": 25,
+    "consistency": 0.68,
+    "home_boost": 0.05
+  },
+  "Brandon Ingram": {
+    "team": "TOR",
+    "avg_pts": 28.9,
+    "home_pts": 29.5,
+    "away_pts": 27.9,
+    "games": 22,
+    "consistency": 0.64,
+    "home_boost": 0.057
+  },
+  "RJ Barrett": {
+    "team": "TOR",
+    "avg_pts": 25.0,
+    "home_pts": 24.9,
+    "away_pts": 25.2,
+    "games": 12,
+    "consistency": 0.83,
+    "home_boost": -0.014
+  },
+  "Matas Buzelis": {
+    "team": "CHI",
+    "avg_pts": 30.0,
+    "home_pts": 30.5,
+    "away_pts": 29.7,
+    "games": 5,
+    "consistency": 0.6,
+    "home_boost": 0.028
+  },
+  "Shaedon Sharpe": {
+    "team": "POR",
+    "avg_pts": 29.4,
+    "home_pts": 27.0,
+    "away_pts": 30.2,
+    "games": 8,
+    "consistency": 0.75,
+    "home_boost": -0.108
+  },
+  "Airious Bailey": {
+    "team": "UTA",
+    "avg_pts": 30.4,
+    "home_pts": 31.7,
+    "away_pts": 28.5,
+    "games": 5,
+    "consistency": 0.8,
+    "home_boost": 0.104
+  },
+  "Jaylen Brown": {
+    "team": "BOS",
+    "avg_pts": 31.8,
+    "home_pts": 30.4,
+    "away_pts": 33.1,
+    "games": 38,
+    "consistency": 0.68,
+    "home_boost": -0.085
+  },
+  "Anthony Edwards": {
+    "team": "MIN",
+    "avg_pts": 34.1,
+    "home_pts": 34.1,
+    "away_pts": 34.2,
+    "games": 28,
+    "consistency": 0.54,
+    "home_boost": -0.002
+  },
+  "Donovan Mitchell": {
+    "team": "CLE",
+    "avg_pts": 32.6,
+    "home_pts": 32.2,
+    "away_pts": 33.1,
+    "games": 44,
+    "consistency": 0.75,
+    "home_boost": -0.028
+  },
+  "Isaiah Joe": {
+    "team": "OKC",
+    "avg_pts": 21.0,
+    "home_pts": 21.0,
+    "away_pts": 21.0,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "Cam Thomas": {
+    "team": "BKN",
+    "avg_pts": 30.2,
+    "home_pts": 25.3,
+    "away_pts": 35.0,
+    "games": 6,
+    "consistency": 0.67,
+    "home_boost": -0.32
+  },
+  "Zach LaVine": {
+    "team": "SAC",
+    "avg_pts": 31.0,
+    "home_pts": 26.0,
+    "away_pts": 31.8,
+    "games": 7,
+    "consistency": 0.71,
+    "home_boost": -0.188
+  },
+  "Brice Sensabaugh": {
+    "team": "UTA",
+    "avg_pts": 32.1,
+    "home_pts": 27.5,
+    "away_pts": 33.7,
+    "games": 8,
+    "consistency": 0.75,
+    "home_boost": -0.192
+  },
+  "Jalen Johnson": {
+    "team": "ATL",
+    "avg_pts": 29.0,
+    "home_pts": 28.9,
+    "away_pts": 29.2,
+    "games": 21,
+    "consistency": 0.71,
+    "home_boost": -0.01
+  },
+  "Miles Bridges": {
+    "team": "CHA",
+    "avg_pts": 27.8,
+    "home_pts": 29.6,
+    "away_pts": 24.7,
+    "games": 8,
+    "consistency": 0.62,
+    "home_boost": 0.178
+  },
+  "LaMelo Ball": {
+    "team": "CHA",
+    "avg_pts": 30.7,
+    "home_pts": 28.7,
+    "away_pts": 33.2,
+    "games": 11,
+    "consistency": 0.64,
+    "home_boost": -0.148
+  },
+  "Brandin Podziemski": {
+    "team": "GSW",
+    "avg_pts": 24.6,
+    "home_pts": 24.5,
+    "away_pts": 24.7,
+    "games": 5,
+    "consistency": 0.8,
+    "home_boost": -0.007
+  },
+  "CJ McCollum": {
+    "team": "WAS",
+    "avg_pts": 29.0,
+    "home_pts": 29.3,
+    "away_pts": 28.5,
+    "games": 10,
+    "consistency": 0.7,
+    "home_boost": 0.029
+  },
+  "Anfernee Simons": {
+    "team": "BOS",
+    "avg_pts": 28.0,
+    "home_pts": 24.0,
+    "away_pts": 32.0,
+    "games": 4,
+    "consistency": 0.5,
+    "home_boost": -0.286
+  },
+  "Ayo Dosunmu": {
+    "team": "CHI",
+    "avg_pts": 24.2,
+    "home_pts": 22.7,
+    "away_pts": 26.5,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": -0.158
+  },
+  "Anthony Davis": {
+    "team": "DAL",
+    "avg_pts": 29.4,
+    "home_pts": 27.5,
+    "away_pts": 30.7,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": -0.108
+  },
+  "Jabari Smith Jr.": {
+    "team": "HOU",
+    "avg_pts": 29.7,
+    "home_pts": 31.5,
+    "away_pts": 26.0,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.185
+  },
+  "Stephen Curry": {
+    "team": "GSW",
+    "avg_pts": 34.2,
+    "home_pts": 32.0,
+    "away_pts": 35.2,
+    "games": 19,
+    "consistency": 0.53,
+    "home_boost": -0.092
+  },
+  "Shai Gilgeous-Alexander": {
+    "team": "OKC",
+    "avg_pts": 33.3,
+    "home_pts": 33.0,
+    "away_pts": 33.6,
+    "games": 50,
+    "consistency": 0.74,
+    "home_boost": -0.017
+  },
+  "Jamal Murray": {
+    "team": "DEN",
+    "avg_pts": 35.0,
+    "home_pts": 33.4,
+    "away_pts": 36.2,
+    "games": 24,
+    "consistency": 0.62,
+    "home_boost": -0.08
+  },
+  "Derrick White": {
+    "team": "BOS",
+    "avg_pts": 29.1,
+    "home_pts": 31.0,
+    "away_pts": 26.7,
+    "games": 7,
+    "consistency": 0.86,
+    "home_boost": 0.149
+  },
+  "Franz Wagner": {
+    "team": "ORL",
+    "avg_pts": 27.3,
+    "home_pts": 29.0,
+    "away_pts": 23.0,
+    "games": 7,
+    "consistency": 0.71,
+    "home_boost": 0.22
+  },
+  "Reed Sheppard": {
+    "team": "HOU",
+    "avg_pts": 29.5,
+    "home_pts": 29.0,
+    "away_pts": 30.0,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": -0.034
+  },
+  "Jerami Grant": {
+    "team": "POR",
+    "avg_pts": 28.0,
+    "home_pts": 27.2,
+    "away_pts": 28.6,
+    "games": 9,
+    "consistency": 0.89,
+    "home_boost": -0.048
+  },
+  "Jalen Duren": {
+    "team": "DET",
+    "avg_pts": 27.2,
+    "home_pts": 28.0,
+    "away_pts": 26.0,
+    "games": 15,
+    "consistency": 0.6,
+    "home_boost": 0.074
+  },
+  "Kyshawn George": {
+    "team": "WAS",
+    "avg_pts": 25.7,
+    "home_pts": 23.0,
+    "away_pts": 27.0,
+    "games": 3,
+    "consistency": 0.33,
+    "home_boost": -0.156
+  },
+  "Bam Adebayo": {
+    "team": "MIA",
+    "avg_pts": 30.4,
+    "home_pts": 35.6,
+    "away_pts": 27.6,
+    "games": 14,
+    "consistency": 0.57,
+    "home_boost": 0.264
+  },
+  "Luka Doncic": {
+    "team": "LAL",
+    "avg_pts": 36.7,
+    "home_pts": 36.7,
+    "away_pts": 36.8,
+    "games": 49,
+    "consistency": 0.76,
+    "home_boost": -0.003
+  },
+  "Michael Porter Jr.": {
+    "team": "BKN",
+    "avg_pts": 30.4,
+    "home_pts": 29.1,
+    "away_pts": 31.5,
+    "games": 24,
+    "consistency": 0.88,
+    "home_boost": -0.078
+  },
+  "Jalen Brunson": {
+    "team": "NYK",
+    "avg_pts": 31.7,
+    "home_pts": 31.9,
+    "away_pts": 31.3,
+    "games": 30,
+    "consistency": 0.8,
+    "home_boost": 0.02
+  },
+  "Ousmane Dieng": {
+    "team": "OKC",
+    "avg_pts": 24.0,
+    "home_pts": 17.0,
+    "away_pts": 27.5,
+    "games": 3,
+    "consistency": 0.0,
+    "home_boost": -0.438
+  },
+  "Victor Wembanyama": {
+    "team": "SAS",
+    "avg_pts": 30.7,
+    "home_pts": 31.5,
+    "away_pts": 29.9,
+    "games": 26,
+    "consistency": 0.54,
+    "home_boost": 0.053
+  },
+  "Brandon Miller": {
+    "team": "CHA",
+    "avg_pts": 27.8,
+    "home_pts": 28.2,
+    "away_pts": 27.2,
+    "games": 16,
+    "consistency": 1.0,
+    "home_boost": 0.037
+  },
+  "Nikola Vucevic": {
+    "team": "CHI",
+    "avg_pts": 27.4,
+    "home_pts": 28.0,
+    "away_pts": 25.0,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": 0.109
+  },
+  "Ja Morant": {
+    "team": "MEM",
+    "avg_pts": 30.0,
+    "home_pts": 30.0,
+    "away_pts": 30.0,
+    "games": 4,
+    "consistency": 0.25,
+    "home_boost": 0.0
+  },
+  "Giannis Antetokounmpo": {
+    "team": "MIL",
+    "avg_pts": 32.3,
+    "home_pts": 31.7,
+    "away_pts": 32.9,
+    "games": 19,
+    "consistency": 0.79,
+    "home_boost": -0.037
+  },
+  "Kevin Durant": {
+    "team": "HOU",
+    "avg_pts": 31.8,
+    "home_pts": 30.8,
+    "away_pts": 32.5,
+    "games": 30,
+    "consistency": 0.87,
+    "home_boost": -0.053
+  },
+  "Lauri Markkanen": {
+    "team": "UTA",
+    "avg_pts": 33.8,
+    "home_pts": 39.7,
+    "away_pts": 29.4,
+    "games": 14,
+    "consistency": 0.57,
+    "home_boost": 0.305
+  },
+  "James Harden": {
+    "team": "LAC",
+    "avg_pts": 33.4,
+    "home_pts": 28.8,
+    "away_pts": 35.0,
+    "games": 16,
+    "consistency": 0.81,
+    "home_boost": -0.187
+  },
+  "Paolo Banchero": {
+    "team": "ORL",
+    "avg_pts": 29.9,
+    "home_pts": 30.3,
+    "away_pts": 29.7,
+    "games": 15,
+    "consistency": 0.67,
+    "home_boost": 0.022
+  },
+  "Chet Holmgren": {
+    "team": "OKC",
+    "avg_pts": 28.2,
+    "home_pts": 29.0,
+    "away_pts": 28.0,
+    "games": 6,
+    "consistency": 1.0,
+    "home_boost": 0.036
+  },
+  "Cedric Coward": {
+    "team": "MEM",
+    "avg_pts": 24.0,
+    "home_pts": 23.0,
+    "away_pts": 27.0,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": -0.167
+  },
+  "Pascal Siakam": {
+    "team": "IND",
+    "avg_pts": 29.1,
+    "home_pts": 26.4,
+    "away_pts": 30.5,
+    "games": 15,
+    "consistency": 0.93,
+    "home_boost": -0.141
+  },
+  "Scottie Barnes": {
+    "team": "TOR",
+    "avg_pts": 26.4,
+    "home_pts": 25.8,
+    "away_pts": 27.7,
+    "games": 9,
+    "consistency": 0.89,
+    "home_boost": -0.069
+  },
+  "Kawhi Leonard": {
+    "team": "LAC",
+    "avg_pts": 31.7,
+    "home_pts": 34.1,
+    "away_pts": 27.9,
+    "games": 34,
+    "consistency": 0.65,
+    "home_boost": 0.194
+  },
+  "Austin Reaves": {
+    "team": "LAL",
+    "avg_pts": 38.5,
+    "home_pts": 35.4,
+    "away_pts": 43.7,
+    "games": 8,
+    "consistency": 0.88,
+    "home_boost": -0.215
+  },
+  "Kristaps Porzingis": {
+    "team": "ATL",
+    "avg_pts": 28.8,
+    "home_pts": 28.0,
+    "away_pts": 29.0,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": -0.035
+  },
+  "Jaime Jaquez Jr.": {
+    "team": "MIA",
+    "avg_pts": 30.3,
+    "home_pts": 30.0,
+    "away_pts": 31.0,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": -0.033
+  },
+  "Jimmy Butler III": {
+    "team": "GSW",
+    "avg_pts": 26.2,
+    "home_pts": 24.7,
+    "away_pts": 31.0,
+    "games": 4,
+    "consistency": 0.25,
+    "home_boost": -0.241
+  },
+  "Jeremiah Fears": {
+    "team": "NOP",
+    "avg_pts": 29.9,
+    "home_pts": 40.0,
+    "away_pts": 28.2,
+    "games": 7,
+    "consistency": 0.29,
+    "home_boost": 0.396
+  },
+  "Nikola Jokic": {
+    "team": "DEN",
+    "avg_pts": 34.1,
+    "home_pts": 33.8,
+    "away_pts": 34.6,
+    "games": 29,
+    "consistency": 0.69,
+    "home_boost": -0.024
+  },
+  "Julius Randle": {
+    "team": "MIN",
+    "avg_pts": 30.0,
+    "home_pts": 29.7,
+    "away_pts": 30.2,
+    "games": 15,
+    "consistency": 0.67,
+    "home_boost": -0.019
+  },
+  "Ryan Rollins": {
+    "team": "MIL",
+    "avg_pts": 27.7,
+    "home_pts": 28.0,
+    "away_pts": 27.5,
+    "games": 6,
+    "consistency": 0.83,
+    "home_boost": 0.018
+  },
+  "Evan Mobley": {
+    "team": "CLE",
+    "avg_pts": 28.6,
+    "home_pts": 29.0,
+    "away_pts": 28.5,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": 0.017
+  },
+  "Deni Avdija": {
+    "team": "POR",
+    "avg_pts": 30.7,
+    "home_pts": 32.0,
+    "away_pts": 29.4,
+    "games": 20,
+    "consistency": 0.65,
+    "home_boost": 0.085
+  },
+  "Aaron Nesmith": {
+    "team": "IND",
+    "avg_pts": 30.7,
+    "home_pts": 31.0,
+    "away_pts": 30.5,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.016
+  },
+  "Karl-Anthony Towns": {
+    "team": "NYK",
+    "avg_pts": 32.1,
+    "home_pts": 30.5,
+    "away_pts": 33.7,
+    "games": 12,
+    "consistency": 0.75,
+    "home_boost": -0.099
+  },
+  "Amen Thompson": {
+    "team": "HOU",
+    "avg_pts": 30.0,
+    "home_pts": 36.0,
+    "away_pts": 27.0,
+    "games": 6,
+    "consistency": 0.67,
+    "home_boost": 0.3
+  },
+  "Jalen Green": {
+    "team": "PHX",
+    "avg_pts": 27.8,
+    "home_pts": 30.0,
+    "away_pts": 25.5,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": 0.162
+  },
+  "Kon Knueppel": {
+    "team": "CHA",
+    "avg_pts": 29.9,
+    "home_pts": 30.7,
+    "away_pts": 29.4,
+    "games": 8,
+    "consistency": 1.0,
+    "home_boost": 0.042
+  },
+  "Naji Marshall": {
+    "team": "DAL",
+    "avg_pts": 32.2,
+    "home_pts": 34.0,
+    "away_pts": 31.0,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": 0.093
+  },
+  "Trey Murphy III": {
+    "team": "NOP",
+    "avg_pts": 30.4,
+    "home_pts": 28.8,
+    "away_pts": 33.4,
+    "games": 14,
+    "consistency": 0.43,
+    "home_boost": -0.152
+  },
+  "Payton Pritchard": {
+    "team": "BOS",
+    "avg_pts": 28.8,
+    "home_pts": 27.5,
+    "away_pts": 30.2,
+    "games": 12,
+    "consistency": 0.67,
+    "home_boost": -0.092
+  },
+  "Jarrett Allen": {
+    "team": "CLE",
+    "avg_pts": 31.0,
+    "home_pts": 31.0,
+    "away_pts": 31.0,
+    "games": 4,
+    "consistency": 0.75,
+    "home_boost": 0.0
+  },
+  "Alex Sarr": {
+    "team": "WAS",
+    "avg_pts": 22.7,
+    "home_pts": 22.7,
+    "away_pts": 22.7,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "De'Aaron Fox": {
+    "team": "SAS",
+    "avg_pts": 28.6,
+    "home_pts": 27.0,
+    "away_pts": 29.0,
+    "games": 10,
+    "consistency": 0.9,
+    "home_boost": -0.07
+  },
+  "Dillon Brooks": {
+    "team": "PHX",
+    "avg_pts": 27.8,
+    "home_pts": 29.0,
+    "away_pts": 24.7,
+    "games": 11,
+    "consistency": 0.73,
+    "home_boost": 0.156
+  },
+  "Santi Aldama": {
+    "team": "MEM",
+    "avg_pts": 31.2,
+    "home_pts": 29.3,
+    "away_pts": 37.0,
+    "games": 4,
+    "consistency": 0.75,
+    "home_boost": -0.245
+  },
+  "Nickeil Alexander-Walker": {
+    "team": "ATL",
+    "avg_pts": 30.5,
+    "home_pts": 31.8,
+    "away_pts": 28.8,
+    "games": 11,
+    "consistency": 0.64,
+    "home_boost": 0.1
+  },
+  "Andrew Nembhard": {
+    "team": "IND",
+    "avg_pts": 29.0,
+    "home_pts": 29.3,
+    "away_pts": 28.5,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": 0.029
+  },
+  "Cooper Flagg": {
+    "team": "DAL",
+    "avg_pts": 34.5,
+    "home_pts": 36.6,
+    "away_pts": 31.3,
+    "games": 15,
+    "consistency": 0.47,
+    "home_boost": 0.152
+  },
+  "Zion Williamson": {
+    "team": "NOP",
+    "avg_pts": 29.6,
+    "home_pts": 31.4,
+    "away_pts": 26.7,
+    "games": 8,
+    "consistency": 1.0,
+    "home_boost": 0.16
+  },
+  "Anthony Black": {
+    "team": "ORL",
+    "avg_pts": 30.0,
+    "home_pts": 31.0,
+    "away_pts": 29.0,
+    "games": 4,
+    "consistency": 0.5,
+    "home_boost": 0.067
+  },
+  "Tyler Herro": {
+    "team": "MIA",
+    "avg_pts": 29.4,
+    "home_pts": 29.5,
+    "away_pts": 29.3,
+    "games": 5,
+    "consistency": 1.0,
+    "home_boost": 0.006
+  },
+  "Jaren Jackson Jr.": {
+    "team": "MEM",
+    "avg_pts": 27.5,
+    "home_pts": 24.3,
+    "away_pts": 29.4,
+    "games": 8,
+    "consistency": 1.0,
+    "home_boost": -0.184
+  },
+  "Andrew Wiggins": {
+    "team": "MIA",
+    "avg_pts": 28.3,
+    "home_pts": 28.3,
+    "away_pts": 28.3,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "Kevin Porter Jr.": {
+    "team": "MIL",
+    "avg_pts": 27.4,
+    "home_pts": 27.0,
+    "away_pts": 27.6,
+    "games": 8,
+    "consistency": 1.0,
+    "home_boost": -0.022
+  },
+  "Desmond Bane": {
+    "team": "ORL",
+    "avg_pts": 32.6,
+    "home_pts": 34.0,
+    "away_pts": 31.2,
+    "games": 8,
+    "consistency": 0.88,
+    "home_boost": 0.084
+  },
+  "Devin Vassell": {
+    "team": "SAS",
+    "avg_pts": 24.8,
+    "home_pts": 24.8,
+    "away_pts": 24.8,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "Immanuel Quickley": {
+    "team": "TOR",
+    "avg_pts": 32.5,
+    "home_pts": 31.0,
+    "away_pts": 33.0,
+    "games": 4,
+    "consistency": 0.75,
+    "home_boost": -0.062
+  },
+  "Quentin Grimes": {
+    "team": "PHI",
+    "avg_pts": 26.5,
+    "home_pts": 29.5,
+    "away_pts": 23.5,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": 0.226
+  },
+  "Jalen Williams": {
+    "team": "OKC",
+    "avg_pts": 25.5,
+    "home_pts": 25.5,
+    "away_pts": 25.5,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "Kyle Kuzma": {
+    "team": "MIL",
+    "avg_pts": 31.7,
+    "home_pts": 31.7,
+    "away_pts": 31.7,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "Joel Embiid": {
+    "team": "PHI",
+    "avg_pts": 33.7,
+    "home_pts": 34.6,
+    "away_pts": 32.4,
+    "games": 12,
+    "consistency": 1.0,
+    "home_boost": 0.064
+  },
+  "Keyonte George": {
+    "team": "UTA",
+    "avg_pts": 33.4,
+    "home_pts": 34.2,
+    "away_pts": 32.5,
+    "games": 8,
+    "consistency": 0.75,
+    "home_boost": 0.052
+  },
+  "Paul George": {
+    "team": "PHI",
+    "avg_pts": 32.2,
+    "home_pts": 27.5,
+    "away_pts": 37.0,
+    "games": 4,
+    "consistency": 0.5,
+    "home_boost": -0.295
+  },
+  "Coby White": {
+    "team": "CHI",
+    "avg_pts": 24.4,
+    "home_pts": 24.5,
+    "away_pts": 24.0,
+    "games": 7,
+    "consistency": 1.0,
+    "home_boost": 0.02
+  },
+  "OG Anunoby": {
+    "team": "NYK",
+    "avg_pts": 28.0,
+    "home_pts": 29.5,
+    "away_pts": 25.0,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.161
+  },
+  "Dylan Harper": {
+    "team": "SAS",
+    "avg_pts": 18.0,
+    "home_pts": 16.0,
+    "away_pts": 22.0,
+    "games": 3,
+    "consistency": 0.0,
+    "home_boost": -0.333
+  },
+  "Darius Garland": {
+    "team": "CLE",
+    "avg_pts": 32.0,
+    "home_pts": 30.0,
+    "away_pts": 33.3,
+    "games": 5,
+    "consistency": 0.6,
+    "home_boost": -0.104
+  },
+  "LeBron James": {
+    "team": "LAL",
+    "avg_pts": 27.6,
+    "home_pts": 26.8,
+    "away_pts": 29.0,
+    "games": 8,
+    "consistency": 0.75,
+    "home_boost": -0.08
+  },
+  "DeMar DeRozan": {
+    "team": "SAC",
+    "avg_pts": 32.5,
+    "home_pts": 33.0,
+    "away_pts": 31.7,
+    "games": 8,
+    "consistency": 0.62,
+    "home_boost": 0.041
+  },
+  "Julian Champagnie": {
+    "team": "SAS",
+    "avg_pts": 29.7,
+    "home_pts": 36.0,
+    "away_pts": 26.5,
+    "games": 3,
+    "consistency": 0.67,
+    "home_boost": 0.32
+  },
+  "De'Anthony Melton": {
+    "team": "GSW",
+    "avg_pts": 23.5,
+    "home_pts": 22.0,
+    "away_pts": 25.0,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": -0.128
+  },
+  "Russell Westbrook": {
+    "team": "SAC",
+    "avg_pts": 24.7,
+    "home_pts": 24.5,
+    "away_pts": 25.0,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": -0.02
+  },
+  "Mikal Bridges": {
+    "team": "NYK",
+    "avg_pts": 24.2,
+    "home_pts": 25.0,
+    "away_pts": 24.0,
+    "games": 4,
+    "consistency": 0.5,
+    "home_boost": 0.041
+  },
+  "Maxime Raynaud": {
+    "team": "SAC",
+    "avg_pts": 25.8,
+    "home_pts": 27.3,
+    "away_pts": 21.0,
+    "games": 4,
+    "consistency": 0.75,
+    "home_boost": 0.246
+  },
+  "Toumani Camara": {
+    "team": "POR",
+    "avg_pts": 26.5,
+    "home_pts": 29.3,
+    "away_pts": 18.0,
+    "games": 4,
+    "consistency": 0.5,
+    "home_boost": 0.428
+  },
+  "Jarace Walker": {
+    "team": "IND",
+    "avg_pts": 21.0,
+    "home_pts": 21.0,
+    "away_pts": 21.0,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.0
+  },
+  "Jrue Holiday": {
+    "team": "POR",
+    "avg_pts": 30.8,
+    "home_pts": 27.0,
+    "away_pts": 32.0,
+    "games": 4,
+    "consistency": 1.0,
+    "home_boost": -0.163
+  },
+  "GG Jackson": {
+    "team": "MEM",
+    "avg_pts": 25.6,
+    "home_pts": 24.7,
+    "away_pts": 27.0,
+    "games": 5,
+    "consistency": 0.8,
+    "home_boost": -0.091
+  },
+  "Collin Sexton": {
+    "team": "CHI",
+    "avg_pts": 24.0,
+    "home_pts": 21.0,
+    "away_pts": 30.0,
+    "games": 3,
+    "consistency": 0.67,
+    "home_boost": -0.375
+  },
+  "Precious Achiuwa": {
+    "team": "SAC",
+    "avg_pts": 28.0,
+    "home_pts": 29.0,
+    "away_pts": 27.5,
+    "games": 3,
+    "consistency": 1.0,
+    "home_boost": 0.054
+  }
+}

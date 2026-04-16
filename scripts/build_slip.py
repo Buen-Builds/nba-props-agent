@@ -10,6 +10,13 @@ def fetch(path):
 def log(msg):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 
+# Load player intelligence database
+import os
+db_path = '/home/agentforge/nba-agent/scripts/player_db.json'
+player_db = {}
+if os.path.exists(db_path):
+    player_db = json.load(open(db_path))
+
 avgs = {
     "LaMelo Ball": {"PRA": 42.0, "Rebs+Asts": 15.2, "Points": 28.0},
     "Paolo Banchero": {"PRA": 41.0, "Rebs+Asts": 14.8, "Points": 26.0, "Rebounds": 9.2},
