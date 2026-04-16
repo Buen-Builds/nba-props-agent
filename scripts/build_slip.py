@@ -160,7 +160,7 @@ def run():
             game_info = list(game_label.values())[0]
         else:
             game_info = ('Tonight', 'TBD')
-        lines.append(f'    mp("{safe}", "???", "{stat}", {line}, {avg}, {hr}, 0.20, -500, "{game_info[0]}", "{game_info[1]}")')
+        lines.append(f'    mp("{safe}", "???", "{stat}", {line}, {avg}, {hr}, 0.20, -500, "{game_info[0]}", "{game_info[1]}"),')
 
     log(f"Props after filtering: {len(lines)} (skipped {skipped} injured)")
 
