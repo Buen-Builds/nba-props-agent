@@ -8,7 +8,7 @@ import Buffer "mo:base/Buffer";
 import Iter "mo:base/Iter";
 import Error "mo:base/Error";
 import Timer "mo:base/Timer";
-import ExperimentalCycles "mo:base/ExperimentalCycles";
+import Blob "mo:base/Blob";
 
 persistent actor NBAAgent {
 
@@ -18,6 +18,7 @@ persistent actor NBAAgent {
   var injury_cache : Text = "";
   var fetch_count  : Nat  = 0;
   var live_props   : Text = "";
+  var injured_list : Text = "";
 
   let RAPIDAPI_KEY = "44159ba4cemsh8d61c5958b50bdcp160e6ejsn842ac4627557";
   let TANK_HOST    = "tank01-fantasy-stats.p.rapidapi.com";
@@ -28,7 +29,10 @@ persistent actor NBAAgent {
   type HttpRequest  = {
     url: Text; method: { #get }; headers: [HttpHeader];
     body: ?Blob; max_response_bytes: ?Nat64;
-    transform: ?{ function: shared query ({ response: HttpResponse; context: Blob }) -> async HttpResponse; context: Blob };
+    transform: ?{
+      function: shared query ({ response: HttpResponse; context: Blob }) -> async HttpResponse;
+      context: Blob
+    };
   };
   type IC = actor { http_request: HttpRequest -> async HttpResponse };
   let ic : IC = actor("aaaaa-aa");
@@ -37,12 +41,23 @@ persistent actor NBAAgent {
   type MemActor = actor { set: (Text, Text) -> async (); get: (Text) -> async ?Text };
   func mem() : MemActor { actor("hupoq-3aaaa-aaaas-qf4tq-cai") };
 
+  public query func transform(raw: { response: HttpResponse; context: Blob }) : async HttpResponse {
+    {
+      status  = raw.response.status;
+      body    = raw.response.body;
+      headers = [
+        { name = "Content-Type"; value = "application/json" },
+        { name = "Cache-Control"; value = "no-cache" }
+      ];
+    }
+  };
+
   public func register_on_agentforge() : async Text {
     let r : RegActor = actor("h2ndy-aqaaa-aaaas-qf4sq-cai");
     try {
       let res = await r.register(
         "NBA Props Agent",
-        "Live autonomous NBA props. Pulls real PrizePicks lines. RA and PRA combos.",
+        "Live autonomous NBA props. Real injury data. RA and PRA combos.",
         ["nba", "prizepicks", "PRA", "RA"], 50_000_000
       );
       registered := true;
@@ -64,9 +79,8 @@ persistent actor NBAAgent {
     else if (Text.contains(stat, #text "Rebs+Asts"))  { 1.28 }
     else if (Text.contains(stat, #text "Pts+Rebs"))   { 1.20 }
     else if (Text.contains(stat, #text "Rebounds"))   { 1.18 }
-    else if (Text.contains(stat, #text "Dunks"))      { 1.10 }
+    else if (Text.contains(stat, #text "Blocks"))     { 1.15 }
     else if (Text.contains(stat, #text "Points"))     { 1.05 }
-    else if (Text.contains(stat, #text "2PT"))        { 1.05 }
     else if (Text.contains(stat, #text "3PTM"))       { 0.90 }
     else if (Text.contains(stat, #text "FTM"))        { 0.80 }
     else if (Text.contains(stat, #text "Steals"))     { 0.75 }
@@ -86,6 +100,7 @@ persistent actor NBAAgent {
     else if (Text.contains(stat, #text "Pts+Rebs"))   { "PR"  }
     else if (Text.contains(stat, #text "Rebounds"))   { "REB" }
     else if (Text.contains(stat, #text "Points"))     { "PTS" }
+    else if (Text.contains(stat, #text "Blocks"))     { "BLK" }
     else                                              { "OTHER" }
   };
 
@@ -98,73 +113,68 @@ persistent actor NBAAgent {
       game=gm; game_time=gt; odds=od; stat_type=classify(st) }
   };
 
+  func is_injured(player: Text) : Bool {
+    Text.contains(injured_list, #text player)
+  };
+
   func load_props() : [Prop] {[
     mp("Donovan Clingan",  "POR", "Blocks",       0.5,  2.1, 0.90, 0.20, -576, "POR @ PHX", "7:00pm"),
     mp("Donovan Clingan",  "POR", "Rebs+Asts",   14.5, 18.2, 0.90, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Donovan Clingan",  "POR", "Pts+Asts",    13.5, 17.2, 0.88, 0.20, -500, "POR @ PHX", "7:00pm"),
     mp("Deni Avdija",      "POR", "PRA",         40.5, 46.2, 0.86, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Deni Avdija",      "POR", "Points",      24.5, 28.8, 0.86, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Deni Avdija",      "POR", "Pts+Asts",    30.0, 36.8, 0.86, 0.20, -500, "POR @ PHX", "7:00pm"),
     mp("Robert Williams",  "POR", "Rebs+Asts",    8.5, 11.4, 0.90, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Robert Williams",  "POR", "Pts+Asts",     4.5,  6.8, 0.84, 0.20, -500, "POR @ PHX", "7:00pm"),
     mp("Toumani Camara",   "POR", "PRA",         21.5, 25.8, 0.78, 0.35, -500, "POR @ PHX", "7:00pm"),
-    mp("Toumani Camara",   "POR", "Pts+Asts",    14.5, 18.4, 0.86, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Toumani Camara",   "POR", "3PTM",         1.5,  2.4, 0.86, 0.20, -500, "POR @ PHX", "7:00pm"),
     mp("Scoot Henderson",  "POR", "Points",      13.5, 17.2, 0.80, 0.25, -500, "POR @ PHX", "7:00pm"),
-    mp("Scoot Henderson",  "POR", "Pts+Asts",    15.0, 18.6, 0.80, 0.25, -500, "POR @ PHX", "7:00pm"),
-    mp("Jrue Holiday",     "POR", "Pts+Asts",    22.0, 26.8, 0.84, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Shaedon Sharpe",   "POR", "Pts+Asts",    10.5, 13.8, 0.80, 0.25, -500, "POR @ PHX", "7:00pm"),
     mp("Devin Booker",     "PHX", "PRA",         29.5, 37.8, 0.83, 0.22, -474, "POR @ PHX", "7:00pm"),
-    mp("Devin Booker",     "PHX", "Points",      19.5, 27.4, 0.90, 0.20, -474, "POR @ PHX", "7:00pm"),
-    mp("Devin Booker",     "PHX", "Pts+Asts",    33.5, 39.2, 0.86, 0.20, -474, "POR @ PHX", "7:00pm"),
-    mp("Devin Booker",     "PHX", "3PTM",         1.5,  2.8, 0.86, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Mark Williams",    "PHX", "Rebounds",     5.5,  8.2, 0.77, 0.20, -554, "POR @ PHX", "7:00pm"),
-    mp("Mark Williams",    "PHX", "Pts+Asts",    12.0, 15.4, 0.80, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Jalen Green",      "PHX", "Pts+Asts",    22.0, 26.4, 0.82, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Dillon Brooks",    "PHX", "Pts+Asts",    19.5, 23.2, 0.82, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Royce ONeale",     "PHX", "Pts+Asts",    14.5, 18.2, 0.82, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Collin Gillespie", "PHX", "Pts+Asts",    11.5, 14.8, 0.82, 0.20, -500, "POR @ PHX", "7:00pm"),
-    mp("Jordan Goodwin",   "PHX", "Pts+Asts",    10.5, 13.6, 0.80, 0.20, -500, "POR @ PHX", "7:00pm")
+    mp("Devin Booker",     "PHX", "Points",      19.5, 27.4, 0.88, 0.22, -474, "POR @ PHX", "7:00pm"),
+    mp("Mark Williams",    "PHX", "Rebounds",     5.5,  8.2, 0.77, 0.20, -554, "POR @ PHX", "7:00pm")
   ]};
 
-  public func fetch_live_props() : async Text {
-    ExperimentalCycles.add(230_949_972_000);
-    try {
-      let res = await ic.http_request({
-        url = WORKER_URL;
-        method = #get;
-        max_response_bytes = ?Nat64.fromNat(200_000);
-        headers = [{ name = "Accept"; value = "application/json" }];
-        body = null; transform = null;
-      });
-      let txt = switch (Text.decodeUtf8(res.body)) {
-        case (?t) { t }; case null { "" };
-      };
-      live_props := txt;
-      fetch_count := fetch_count + 1;
-      "Fetched: " # Nat.toText(txt.size()) # " chars"
-    } catch(e) { "fetch error: " # Error.message(e) }
-  };
-
   public func fetch_injuries() : async Text {
-    ExperimentalCycles.add(230_949_972_000);
     try {
-      let res = await ic.http_request({
+      let res = await (with cycles = 230_949_972_000) ic.http_request({
         url = "https://tank01-fantasy-stats.p.rapidapi.com/getNBAInjuryList";
         method = #get;
-        max_response_bytes = ?Nat64.fromNat(50_000);
+        max_response_bytes = ?Nat64.fromNat(100_000);
         headers = [
-          { name = "x-rapidapi-key"; value = RAPIDAPI_KEY },
+          { name = "x-rapidapi-key";  value = RAPIDAPI_KEY },
           { name = "x-rapidapi-host"; value = TANK_HOST }
         ];
-        body = null; transform = null;
+        body = null;
+        transform = ?{
+          function = transform;
+          context  = Blob.fromArray([]);
+        };
       });
       let txt = switch (Text.decodeUtf8(res.body)) {
         case (?t) { t }; case null { "" };
       };
       injury_cache := txt;
-      txt
-    } catch(e) { "injury error: " # Error.message(e) }
+      fetch_count  := fetch_count + 1;
+      injured_list := txt;
+      "OK: " # Nat.toText(txt.size()) # " bytes"
+    } catch(e) { "error: " # Error.message(e) }
+  };
+
+  public func fetch_live_props() : async Text {
+    try {
+      let res = await (with cycles = 230_949_972_000) ic.http_request({
+        url = WORKER_URL;
+        method = #get;
+        max_response_bytes = ?Nat64.fromNat(200_000);
+        headers = [{ name = "Accept"; value = "application/json" }];
+        body = null;
+        transform = ?{
+          function = transform;
+          context  = Blob.fromArray([]);
+        };
+      });
+      let txt = switch (Text.decodeUtf8(res.body)) {
+        case (?t) { t }; case null { "" };
+      };
+      live_props  := txt;
+      fetch_count := fetch_count + 1;
+      "OK: " # Nat.toText(txt.size()) # " bytes"
+    } catch(e) { "error: " # Error.message(e) }
   };
 
   func rank_props(ps: [Prop]) : [Prop] {
@@ -228,10 +238,13 @@ persistent actor NBAAgent {
   };
 
   public func get_best_slip(n: Nat) : async Text {
-    let ranked = rank_props(load_props());
+    let ranked   = rank_props(load_props());
     let filtered = Array.filter<Prop>(ranked, func(p) {
-      p.edge > 0.0 and p.confidence > 0.72 and
-      not assists_only(p.stat) and p.edge_pct > 0.10
+      p.edge > 0.0 and
+      p.confidence > 0.72 and
+      not assists_only(p.stat) and
+      p.edge_pct > 0.10 and
+      not is_injured(p.player)
     });
     let deduped = one_per_player(filtered);
     let count   = Nat.min(n, deduped.size());
@@ -248,14 +261,15 @@ persistent actor NBAAgent {
   public func get_best_4_pick() : async Text { await get_best_slip(4) };
 
   public func refresh_data() : async Text {
-    ignore await fetch_live_props();
-    let slip = await get_best_slip(6);
-    "Refreshed. Slip ready."
+    let i = await fetch_injuries();
+    let p = await fetch_live_props();
+    let _s = await get_best_slip(6);
+    "Injuries: " # i # " | Props: " # p
   };
 
-  public query func get_live_props()    : async Text { live_props };
-  public query func get_injury_cache()  : async Text { injury_cache };
-  public query func get_last_slip()     : async Text { last_slip };
+  public query func get_injury_cache() : async Text { injury_cache };
+  public query func get_live_props()   : async Text { live_props };
+  public query func get_last_slip()    : async Text { last_slip };
 
   public query func get_agent_stats() : async Text {
     "{\"total_slips\":" # Nat.toText(total_slips) #
@@ -264,6 +278,7 @@ persistent actor NBAAgent {
   };
 
   let _timer = Timer.recurringTimer<system>(#seconds(60), func() : async () {
+    ignore await fetch_injuries();
     ignore await fetch_live_props();
     ignore await get_best_slip(6);
   });

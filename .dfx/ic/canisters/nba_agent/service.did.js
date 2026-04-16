@@ -1,4 +1,10 @@
 export const idlFactory = ({ IDL }) => {
+  const HttpHeader = IDL.Record({ 'value' : IDL.Text, 'name' : IDL.Text });
+  const HttpResponse = IDL.Record({
+    'status' : IDL.Nat,
+    'body' : IDL.Vec(IDL.Nat8),
+    'headers' : IDL.Vec(HttpHeader),
+  });
   return IDL.Service({
     'fetch_injuries' : IDL.Func([], [IDL.Text], []),
     'fetch_live_props' : IDL.Func([], [IDL.Text], []),
@@ -13,6 +19,16 @@ export const idlFactory = ({ IDL }) => {
     'get_ranked_props' : IDL.Func([], [IDL.Text], ['query']),
     'refresh_data' : IDL.Func([], [IDL.Text], []),
     'register_on_agentforge' : IDL.Func([], [IDL.Text], []),
+    'transform' : IDL.Func(
+        [
+          IDL.Record({
+            'context' : IDL.Vec(IDL.Nat8),
+            'response' : HttpResponse,
+          }),
+        ],
+        [HttpResponse],
+        ['query'],
+      ),
   });
 };
 export const init = ({ IDL }) => { return []; };

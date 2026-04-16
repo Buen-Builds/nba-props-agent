@@ -28,6 +28,7 @@ actor {
       http_request :
         shared HttpRequest__71017672 -> async HttpResponse__242452579
     };
+  stable var injured_list : Text;
   stable var injury_cache : Text;
   stable var last_slip : Text;
   stable var live_props : Text;

@@ -2,6 +2,12 @@ import type { Principal } from '@icp-sdk/core/principal';
 import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 
+export interface HttpHeader { 'value' : string, 'name' : string }
+export interface HttpResponse {
+  'status' : bigint,
+  'body' : Uint8Array | number[],
+  'headers' : Array<HttpHeader>,
+}
 export interface _SERVICE {
   'fetch_injuries' : ActorMethod<[], string>,
   'fetch_live_props' : ActorMethod<[], string>,
@@ -16,6 +22,10 @@ export interface _SERVICE {
   'get_ranked_props' : ActorMethod<[], string>,
   'refresh_data' : ActorMethod<[], string>,
   'register_on_agentforge' : ActorMethod<[], string>,
+  'transform' : ActorMethod<
+    [{ 'context' : Uint8Array | number[], 'response' : HttpResponse }],
+    HttpResponse
+  >,
 }
 export declare const idlFactory: IDL.InterfaceFactory;
 export declare const init: (args: { IDL: typeof IDL }) => IDL.Type[];
