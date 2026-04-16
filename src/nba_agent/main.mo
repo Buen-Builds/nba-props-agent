@@ -113,156 +113,156 @@ persistent actor NBAAgent {
   };
 
   func load_props() : [Prop] {[
-    mp("Moussa Diabaté", "???", "Rebounds", 9.5, 11.2, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Paolo Banchero", "???", "Rebounds", 8.0, 9.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Wendell Carter", "???", "Rebounds", 7.5, 9.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Brandon Miller", "???", "Rebounds", 5.5, 6.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Miles Bridges", "???", "Rebounds", 6.0, 7.2, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Kon Knueppel", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("LaMelo Ball", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Goga Bitadze", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Desmond Bane", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Franz Wagner", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jalen Suggs", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Ryan Kalkbrenner", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Anthony Black", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Grant Williams", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Coby White", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Sion James", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jamal Cain", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Tristan Silva", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Mark Williams", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Draymond Green", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Kristaps Porziņģis", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Brandin Podziemski", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Gui Santos", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jordan Goodwin", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Al Horford", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Devin Booker", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Dillon Brooks", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jalen Green", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Stephen Curry", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Royce O'Neale", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("De'Anthony Melton", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Evan Mobley", "???", "Rebounds", 9.0, 10.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jarrett Allen", "???", "Rebounds", 9.0, 10.2, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jakob Poeltl", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Scottie Barnes", "???", "Rebounds", 7.0, 7.9, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Brandon Ingram", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("James Harden", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("RJ Barrett", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Donovan Mitchell", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Dean Wade", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Max Strus", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Sandro Mamukelashvili", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Immanuel Quickley", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Sam Merrill", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Ja'Kobe Walter", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Nikola Jokić", "???", "Rebounds", 13.0, 14.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Rudy Gobert", "???", "Rebounds", 10.5, 11.9, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Julius Randle", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Naz Reid", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Aaron Gordon", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Anthony Edwards", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Christian Braun", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jamal Murray", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Donte DiVincenzo", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jaden McDaniels", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Cameron Johnson", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Ayo Dosunmu", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Tim Hardaway", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Karl-Anthony Towns", "???", "Rebounds", 12.0, 13.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jalen Johnson", "???", "Rebounds", 10.0, 11.3, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Mitchell Robinson", "???", "Rebounds", 8.5, 9.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Onyeka Okongwu", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Dyson Daniels", "???", "Rebounds", 7.0, 7.9, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Josh Hart", "???", "Rebounds", 7.0, 7.9, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("OG Anunoby", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jonathan Kuminga", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Nickeil Alexander-Walker", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jalen Brunson", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Mikal Bridges", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("CJ McCollum", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Miles McBride", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Landry Shamet", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Alperen Sengun", "???", "Rebounds", 9.0, 10.2, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Amen Thompson", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Deandre Ayton", "???", "Rebounds", 8.0, 9.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("LeBron James", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jabari Smith", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Kevin Durant", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Tari Eason", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Rui Hachimura", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Josh Okogie", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jake LaRavia", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jaxson Hayes", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jarred Vanderbilt", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Reed Sheppard", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Luke Kennard", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Marcus Smart", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Andre Drummond", "???", "Rebounds", 9.5, 10.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jayson Tatum", "???", "Rebounds", 8.5, 9.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Neemias Queta", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jaylen Brown", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Paul George", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("VJ Edgecombe", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Nikola Vučević", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Adem Bona", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Kelly Oubre", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Derrick White", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Payton Pritchard", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Sam Hauser", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Tyrese Maxey", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Quentin Grimes", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Donovan Clingan", "???", "Rebounds", 11.0, 12.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Victor Wembanyama", "???", "Rebounds", 11.5, 13.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Deni Avdija", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Stephon Castle", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Robert Williams", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Julian Champagnie", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Toumani Camara", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Jrue Holiday", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("De'Aaron Fox", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Devin Vassell", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Keldon Johnson", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Luke Kornet", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Dylan Harper", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Scoot Henderson", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Shaedon Sharpe", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("Harrison Barnes", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD"),
-    mp("Jerami Grant", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "Tonight", "TBD")
-    mp("LaMelo Ball", "???", "PRA", 36.5, 42.0, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Paolo Banchero", "???", "PRA", 36.0, 41.0, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Brandon Miller", "???", "PRA", 28.5, 32.0, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Jalen Suggs", "???", "PRA", 23.5, 26.0, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Kon Knueppel", "???", "PRA", 24.5, 27.7, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Desmond Bane", "???", "PRA", 27.5, 31.1, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Franz Wagner", "???", "PRA", 24.5, 27.7, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Miles Bridges", "???", "PRA", 24.5, 24.0, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Moussa Diabaté", "???", "PRA", 19.5, 18.0, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Coby White", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Wendell Carter", "???", "PRA", 19.5, 20.0, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Anthony Black", "???", "PRA", 16.0, 18.1, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Tristan Silva", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Goga Bitadze", "???", "PRA", 9.5, 10.7, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Ryan Kalkbrenner", "???", "PRA", 7.5, 8.5, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Sion James", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Jamal Cain", "???", "PRA", 5.5, 6.2, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Stephen Curry", "???", "PRA", 36.5, 41.2, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Devin Booker", "???", "PRA", 37.5, 37.8, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Jalen Green", "???", "PRA", 26.5, 29.9, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Kristaps Porziņģis", "???", "PRA", 25.5, 28.8, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Brandin Podziemski", "???", "PRA", 23.5, 26.6, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Draymond Green", "???", "PRA", 20.5, 23.2, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Dillon Brooks", "???", "PRA", 22.5, 24.2, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Gui Santos", "???", "PRA", 20.5, 23.2, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Mark Williams", "???", "PRA", 17.0, 19.2, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Jordan Goodwin", "???", "PRA", 15.5, 17.5, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("De'Anthony Melton", "???", "PRA", 15.5, 17.5, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Al Horford", "???", "PRA", 14.5, 16.4, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("Royce O'Neale", "???", "PRA", 13.0, 14.7, 0.85, 0.20, -500, "Tonight", "TBD")
-    mp("Donovan Mitchell", "???", "PRA", 37.5, 42.4, 0.85, 0.20, -500, "Tonight", "TBD"),
-    mp("James Harden", "???", "PRA", 33.5, 37.9, 0.85, 0.20, -500, "Tonight", "TBD")
+    mp("Moussa Diabaté", "???", "Rebounds", 9.5, 11.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Paolo Banchero", "???", "Rebounds", 8.0, 9.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Wendell Carter", "???", "Rebounds", 7.5, 9.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Brandon Miller", "???", "Rebounds", 5.5, 6.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Miles Bridges", "???", "Rebounds", 6.0, 7.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Kon Knueppel", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("LaMelo Ball", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Goga Bitadze", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Desmond Bane", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Franz Wagner", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jalen Suggs", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Ryan Kalkbrenner", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Anthony Black", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Grant Williams", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Coby White", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Sion James", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jamal Cain", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Tristan Silva", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Mark Williams", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Draymond Green", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Kristaps Porziņģis", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Brandin Podziemski", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Gui Santos", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jordan Goodwin", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Al Horford", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Devin Booker", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Dillon Brooks", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jalen Green", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Stephen Curry", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Royce O'Neale", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("De'Anthony Melton", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Evan Mobley", "???", "Rebounds", 9.0, 10.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jarrett Allen", "???", "Rebounds", 9.0, 10.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jakob Poeltl", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Scottie Barnes", "???", "Rebounds", 7.0, 7.9, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Brandon Ingram", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("James Harden", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("RJ Barrett", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Donovan Mitchell", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Dean Wade", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Max Strus", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Sandro Mamukelashvili", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Immanuel Quickley", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Sam Merrill", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Ja'Kobe Walter", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Nikola Jokić", "???", "Rebounds", 13.0, 14.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Rudy Gobert", "???", "Rebounds", 10.5, 11.9, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Julius Randle", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Naz Reid", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Aaron Gordon", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Anthony Edwards", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Christian Braun", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jamal Murray", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Donte DiVincenzo", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jaden McDaniels", "???", "Rebounds", 4.0, 4.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Cameron Johnson", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Ayo Dosunmu", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Tim Hardaway", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Karl-Anthony Towns", "???", "Rebounds", 12.0, 13.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jalen Johnson", "???", "Rebounds", 10.0, 11.3, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Mitchell Robinson", "???", "Rebounds", 8.5, 9.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Onyeka Okongwu", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Dyson Daniels", "???", "Rebounds", 7.0, 7.9, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Josh Hart", "???", "Rebounds", 7.0, 7.9, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("OG Anunoby", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jonathan Kuminga", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Nickeil Alexander-Walker", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jalen Brunson", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Mikal Bridges", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("CJ McCollum", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Miles McBride", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Landry Shamet", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Alperen Sengun", "???", "Rebounds", 9.0, 10.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Amen Thompson", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Deandre Ayton", "???", "Rebounds", 8.0, 9.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("LeBron James", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jabari Smith", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Kevin Durant", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Tari Eason", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Rui Hachimura", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Josh Okogie", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jake LaRavia", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jaxson Hayes", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jarred Vanderbilt", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Reed Sheppard", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Luke Kennard", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Marcus Smart", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Andre Drummond", "???", "Rebounds", 9.5, 10.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jayson Tatum", "???", "Rebounds", 8.5, 9.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Neemias Queta", "???", "Rebounds", 7.5, 8.5, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jaylen Brown", "???", "Rebounds", 6.0, 6.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Paul George", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("VJ Edgecombe", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Nikola Vučević", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Adem Bona", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Kelly Oubre", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Derrick White", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Payton Pritchard", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Sam Hauser", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Tyrese Maxey", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Quentin Grimes", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Donovan Clingan", "???", "Rebounds", 11.0, 12.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Victor Wembanyama", "???", "Rebounds", 11.5, 13.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Deni Avdija", "???", "Rebounds", 6.5, 7.3, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Stephon Castle", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Robert Williams", "???", "Rebounds", 5.5, 6.2, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Julian Champagnie", "???", "Rebounds", 5.0, 5.6, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Toumani Camara", "???", "Rebounds", 4.5, 5.1, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jrue Holiday", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("De'Aaron Fox", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Devin Vassell", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Keldon Johnson", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Luke Kornet", "???", "Rebounds", 3.5, 4.0, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Dylan Harper", "???", "Rebounds", 2.5, 2.8, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Scoot Henderson", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Shaedon Sharpe", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Harrison Barnes", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jerami Grant", "???", "Rebounds", 1.5, 1.7, 0.83, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("LaMelo Ball", "???", "PRA", 36.5, 42.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Paolo Banchero", "???", "PRA", 36.0, 41.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Brandon Miller", "???", "PRA", 28.5, 32.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jalen Suggs", "???", "PRA", 23.5, 26.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Kon Knueppel", "???", "PRA", 24.5, 27.7, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Desmond Bane", "???", "PRA", 27.5, 31.1, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Franz Wagner", "???", "PRA", 24.5, 27.7, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Miles Bridges", "???", "PRA", 24.5, 24.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Moussa Diabaté", "???", "PRA", 19.5, 18.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Coby White", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Wendell Carter", "???", "PRA", 19.5, 20.0, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Anthony Black", "???", "PRA", 16.0, 18.1, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Tristan Silva", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Goga Bitadze", "???", "PRA", 9.5, 10.7, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Ryan Kalkbrenner", "???", "PRA", 7.5, 8.5, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Sion James", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jamal Cain", "???", "PRA", 5.5, 6.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Stephen Curry", "???", "PRA", 36.5, 41.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Devin Booker", "???", "PRA", 37.5, 37.8, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jalen Green", "???", "PRA", 26.5, 29.9, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Kristaps Porziņģis", "???", "PRA", 25.5, 28.8, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Brandin Podziemski", "???", "PRA", 23.5, 26.6, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Draymond Green", "???", "PRA", 20.5, 23.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Dillon Brooks", "???", "PRA", 22.5, 24.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Gui Santos", "???", "PRA", 20.5, 23.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Mark Williams", "???", "PRA", 17.0, 19.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Jordan Goodwin", "???", "PRA", 15.5, 17.5, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("De'Anthony Melton", "???", "PRA", 15.5, 17.5, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Al Horford", "???", "PRA", 14.5, 16.4, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Royce O'Neale", "???", "PRA", 13.0, 14.7, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
+    mp("Donovan Mitchell", "???", "PRA", 37.5, 42.4, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("James Harden", "???", "PRA", 33.5, 37.9, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM")
   ]};
 
   public func fetch_injuries() : async Text {

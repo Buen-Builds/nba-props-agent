@@ -156,7 +156,10 @@ def run():
         avg = avgs.get(player, {}).get(stat, round(line * 1.13, 1))
         hr = hit_rates.get(stat, 0.82)
         safe = player.replace('"','').replace('\\','')
-        game_info = game_label.get('???', ('Tonight','TBD'))
+        if game_label:
+            game_info = list(game_label.values())[0]
+        else:
+            game_info = ('Tonight', 'TBD')
         lines.append(f'    mp("{safe}", "???", "{stat}", {line}, {avg}, {hr}, 0.20, -500, "{game_info[0]}", "{game_info[1]}")')
 
     log(f"Props after filtering: {len(lines)} (skipped {skipped} injured)")
