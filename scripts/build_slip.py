@@ -68,10 +68,11 @@ def get_next_games():
         if upcoming:
             log(f"Games still to play: {len(upcoming)}")
             return upcoming, schedule.get('date','')
+        # Also check next 7 days from NBA CDN
     except Exception as e:
         log(f"Worker schedule error: {e}")
 
-    log("Checking NBA CDN for next game date...")
+    log("Checking NBA CDN for next 7 days of games...")
     res = urllib.request.urlopen(urllib.request.Request(
         'https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json',
         headers={'User-Agent': 'Mozilla/5.0'}
@@ -80,28 +81,31 @@ def get_next_games():
     dates = data['leagueSchedule']['gameDates']
     today = datetime.now()
     sorted_dates = sorted(dates, key=lambda x: x['gameDate'])
+    all_upcoming = []
+    game_date = ''
     for d in sorted_dates:
         try:
             dt = datetime.strptime(d['gameDate'].strip(), '%m/%d/%Y %H:%M:%S')
-            if dt.date() >= today.date() and d['games']:
-                next_games = []
+            if dt.date() >= today.date() and dt.date() <= (today + __import__('datetime').timedelta(days=7)).date() and d['games']:
                 for g in d['games']:
                     tip = g.get('gameDateTimeUTC','')
                     try:
                         tip_dt = datetime.fromisoformat(tip.replace('Z','+00:00'))
                         if tip_dt > datetime.now(timezone.utc):
-                            next_games.append({
+                            all_upcoming.append({
                                 'home': g['homeTeam']['teamCity']+' '+g['homeTeam']['teamName'],
                                 'away': g['awayTeam']['teamCity']+' '+g['awayTeam']['teamName'],
                                 'homeAbbr': g['homeTeam']['teamTricode'],
                                 'awayAbbr': g['awayTeam']['teamTricode'],
                                 'time': tip
                             })
+                            if not game_date:
+                                game_date = d['gameDate']
                     except: pass
-                if next_games:
-                    log(f"Next game day: {dt.strftime('%A %B %d %Y')} — {len(next_games)} games")
-                    return next_games, d['gameDate']
         except: pass
+    if all_upcoming:
+        log(f"Found {len(all_upcoming)} upcoming games in next 7 days")
+        return all_upcoming, game_date
     return [], ''
 
 def run():
