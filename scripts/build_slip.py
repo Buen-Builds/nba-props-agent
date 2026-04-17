@@ -170,7 +170,10 @@ def run():
         pdb = player_db.get(player, {})
         team = pdb.get('team', '???')
         hr_adj = pdb.get('consistency', hr)
-        if game_label:
+        # Match player to correct game using their team
+        if team != '???' and team in game_label:
+            game_info = game_label[team]
+        elif game_label:
             game_info = list(game_label.values())[0]
         else:
             game_info = ('Tonight', 'TBD')
