@@ -9,7 +9,7 @@
     "home_boost": 0.011
   },
   "Valdez Edgecombe": {
-    "team": "PHI",
+    "team": "CHA",
     "avg_pts": 25.8,
     "home_pts": 35.0,
     "away_pts": 23.5,
@@ -531,7 +531,7 @@
     "home_boost": -0.215
   },
   "Kristaps Porzingis": {
-    "team": "ATL",
+    "team": "ORL",
     "avg_pts": 28.8,
     "home_pts": 28.0,
     "away_pts": 29.0,
@@ -1107,6 +1107,24 @@
     "home_boost": 0
   },
   "Mark Williams": {
+    "team": "CHA",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Kristaps Porzi\u0146\u0123is": {
+    "team": "ORL",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "VJ Edgecombe": {
     "team": "CHA",
     "avg_pts": 15.0,
     "home_pts": 15.0,
