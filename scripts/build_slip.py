@@ -210,6 +210,7 @@ def push_slip_to_worker():
     raw = result.stdout
     open('/tmp/slip_raw.txt', 'w').write(raw)
     subprocess.run(['python3', '/tmp/push_slip.py'])
+    subprocess.run(['python3', '/home/agentforge/nba-agent/scripts/push_all_slips.py'])
 
 
 if __name__ == "__main__":
