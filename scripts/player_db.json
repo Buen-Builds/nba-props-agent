@@ -1042,5 +1042,77 @@
     "games": 3,
     "consistency": 1.0,
     "home_boost": 0.054
+  },
+  "Nikola Joki\u0107": {
+    "team": "DEN",
+    "avg_pts": 20.0,
+    "home_pts": 20.0,
+    "away_pts": 20.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Jayson Tatum": {
+    "team": "BOS",
+    "avg_pts": 20.0,
+    "home_pts": 20.0,
+    "away_pts": 20.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Scoot Henderson": {
+    "team": "POR",
+    "avg_pts": 20.0,
+    "home_pts": 20.0,
+    "away_pts": 20.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Donovan Clingan": {
+    "team": "POR",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Stephon Castle": {
+    "team": "SAS",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Wendell Carter": {
+    "team": "ORL",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Jalen Suggs": {
+    "team": "ORL",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Mark Williams": {
+    "team": "CHA",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
   }
 }

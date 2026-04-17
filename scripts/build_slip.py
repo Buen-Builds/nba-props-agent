@@ -161,6 +161,11 @@ def run():
         if player in injured:
             skipped += 1
             continue
+        # Skip players not playing tonight
+        pdb_check = player_db.get(player, {})
+        player_team = pdb_check.get('team', '???')
+        if game_label and player_team != '???' and player_team not in game_label:
+            continue
         key = f"{player}_{stat}"
         if key in seen: continue
         seen.add(key)
