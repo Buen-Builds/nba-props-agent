@@ -1132,5 +1132,32 @@
     "games": 10,
     "consistency": 0.75,
     "home_boost": 0
+  },
+  "Cameron Johnson": {
+    "team": "BKN",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Aaron Gordon": {
+    "team": "DEN",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Onyeka Okongwu": {
+    "team": "ATL",
+    "avg_pts": 12.0,
+    "home_pts": 12.0,
+    "away_pts": 12.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
   }
 }

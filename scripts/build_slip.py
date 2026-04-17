@@ -201,27 +201,15 @@ def run():
 
 
 def push_slip_to_worker():
-    import subprocess, re
+    import subprocess, json as _json, re as _re
     log("Pushing slip to Cloudflare Worker...")
     result = subprocess.run(
         ['dfx', 'canister', 'call', 'p6ttk-lyaaa-aaaah-avb2q-cai', 'get_best_6_pick', '--network', 'ic'],
         capture_output=True, text=True, cwd='/home/agentforge/nba-agent'
     )
     raw = result.stdout
-    match = re.search(r'"(\[.*\])"', raw, re.DOTALL)
-    if match:
-        json_str = match.group(1).replace('\\"', '"').replace('\\\\', '\\')
-        picks = json.loads(json_str)
-        payload = json.dumps({"picks": picks}).encode()
-        with open('/tmp/slip_payload.json', 'wb') as f:
-            f.write(payload)
-        subprocess.run(['curl', '-s', '-X', 'POST',
-            'https://prizepicks-proxy.crisbuen.workers.dev/slip',
-            '-H', 'Content-Type: application/json',
-            '-d', '@/tmp/slip_payload.json'])
-        log(f"Pushed {len(picks)} picks to Worker")
-    else:
-        log("No picks found to push")
+    open('/tmp/slip_raw.txt', 'w').write(raw)
+    subprocess.run(['python3', '/tmp/push_slip.py'])
 
 
 if __name__ == "__main__":
