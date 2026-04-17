@@ -366,6 +366,35 @@ persistent actor NBAAgent {
   public func get_best_6_pick() : async Text { await get_best_slip(6) };
   public func get_best_5_pick() : async Text { await get_best_slip(5) };
   public func get_best_4_pick() : async Text { await get_best_slip(4) };
+  public func get_best_10_pick() : async Text { await get_best_slip(10) };
+
+  public func get_goblin_slip() : async Text {
+    let ranked = rank_props(load_props());
+    let goblins = Array.filter<Prop>(ranked, func(p) {
+      p.line <= 2.0 and p.confidence > 0.72 and p.edge > 0.0
+    });
+    let deduped = one_per_player(goblins);
+    let count = Nat.min(6, deduped.size());
+    let picks = Array.tabulate<Prop>(count, func(i) { deduped[i] });
+    total_slips := total_slips + 1;
+    let j = to_json(picks);
+    last_slip := j;
+    j
+  };
+
+  public func get_value_slip() : async Text {
+    let ranked = rank_props(load_props());
+    let value = Array.filter<Prop>(ranked, func(p) {
+      p.edge_pct > 0.20 and p.confidence > 0.72
+    });
+    let deduped = one_per_player(value);
+    let count = Nat.min(6, deduped.size());
+    let picks = Array.tabulate<Prop>(count, func(i) { deduped[i] });
+    total_slips := total_slips + 1;
+    let j = to_json(picks);
+    last_slip := j;
+    j
+  };
 
   public func refresh_data() : async Text {
     let i = await fetch_injuries();
