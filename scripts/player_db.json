@@ -891,7 +891,7 @@
     "home_boost": -0.295
   },
   "Coby White": {
-    "team": "CHI",
+    "team": "CHA",
     "avg_pts": 24.4,
     "home_pts": 24.5,
     "away_pts": 24.0,
@@ -1203,6 +1203,69 @@
     "away_pts": 12.0,
     "games": 10,
     "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Ryan Kalkbrenner": {
+    "team": "CHA",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Jordan Goodwin": {
+    "team": "PHX",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Grayson Allen": {
+    "team": "PHX",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Draymond Green": {
+    "team": "GSW",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Gui Santos": {
+    "team": "ORL",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Goga Bitadze": {
+    "team": "ORL",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
+    "home_boost": 0
+  },
+  "Royce O'Neale": {
+    "team": "PHX",
+    "avg_pts": 15.0,
+    "home_pts": 15.0,
+    "away_pts": 15.0,
+    "games": 10,
+    "consistency": 0.8,
     "home_boost": 0
   }
 }
