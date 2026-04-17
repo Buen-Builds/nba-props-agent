@@ -128,7 +128,7 @@ persistent actor NBAAgent {
     mp("Ryan Kalkbrenner", "???", "PRA", 7.5, 8.5, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Tristan Silva", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Goga Bitadze", "???", "PRA", 9.5, 10.7, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
-    mp("Jamal Cain", "???", "PRA", 5.5, 6.2, 0.85, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jamal Cain", "ORL", "PRA", 5.5, 6.2, 0.75, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Stephen Curry", "GSW", "PRA", 36.5, 41.2, 0.53, 0.20, -500, "GSW @ PHX", "02:00AM"),
     mp("Devin Booker", "PHX", "PRA", 37.5, 37.8, 0.76, 0.20, -500, "GSW @ PHX", "02:00AM"),
     mp("Kristaps Porziņģis", "ORL", "PRA", 25.5, 28.8, 0.75, 0.20, -500, "CHA @ ORL", "11:30PM"),
@@ -195,7 +195,7 @@ persistent actor NBAAgent {
     mp("Grant Williams", "???", "Rebs+Asts", 3.5, 4.0, 0.87, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Ryan Kalkbrenner", "???", "Rebs+Asts", 3.5, 4.0, 0.87, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Sion James", "???", "Rebs+Asts", 2.5, 2.8, 0.87, 0.20, -500, "CHA @ ORL", "11:30PM"),
-    mp("Jamal Cain", "???", "Rebs+Asts", 1.5, 1.7, 0.87, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jamal Cain", "ORL", "Rebs+Asts", 1.5, 1.7, 0.75, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Tristan Silva", "???", "Rebs+Asts", 2.5, 2.8, 0.87, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Draymond Green", "???", "Rebs+Asts", 12.0, 13.6, 0.87, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Devin Booker", "PHX", "Rebs+Asts", 9.5, 11.0, 0.76, 0.20, -500, "GSW @ PHX", "02:00AM"),
@@ -259,7 +259,7 @@ persistent actor NBAAgent {
     mp("Grant Williams", "???", "Points", 5.5, 6.2, 0.82, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Tristan Silva", "???", "Points", 7.5, 8.5, 0.82, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Ryan Kalkbrenner", "???", "Points", 3.5, 4.0, 0.82, 0.20, -500, "CHA @ ORL", "11:30PM"),
-    mp("Jamal Cain", "???", "Points", 4.5, 5.1, 0.82, 0.20, -500, "CHA @ ORL", "11:30PM"),
+    mp("Jamal Cain", "ORL", "Points", 4.5, 5.1, 0.75, 0.20, -500, "CHA @ ORL", "11:30PM"),
     mp("Stephen Curry", "GSW", "Points", 27.5, 26.4, 0.53, 0.20, -500, "GSW @ PHX", "02:00AM"),
     mp("Devin Booker", "PHX", "Points", 26.5, 27.4, 0.76, 0.20, -500, "GSW @ PHX", "02:00AM"),
     mp("Kristaps Porziņģis", "ORL", "Points", 17.5, 19.8, 0.75, 0.20, -500, "CHA @ ORL", "11:30PM"),
@@ -371,7 +371,7 @@ persistent actor NBAAgent {
   public func get_goblin_slip() : async Text {
     let ranked = rank_props(load_props());
     let goblins = Array.filter<Prop>(ranked, func(p) {
-      p.line <= 2.0 and p.confidence > 0.72 and p.edge > 0.0
+      p.line <= 5.0 and p.confidence > 0.72 and p.edge > 0.0
     });
     let deduped = one_per_player(goblins);
     let count = Nat.min(6, deduped.size());
@@ -385,7 +385,7 @@ persistent actor NBAAgent {
   public func get_value_slip() : async Text {
     let ranked = rank_props(load_props());
     let value = Array.filter<Prop>(ranked, func(p) {
-      p.edge_pct > 0.20 and p.confidence > 0.72
+      p.edge_pct > 0.15 and p.confidence > 0.72
     });
     let deduped = one_per_player(value);
     let count = Nat.min(6, deduped.size());

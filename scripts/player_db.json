@@ -1159,5 +1159,50 @@
     "games": 10,
     "consistency": 0.75,
     "home_boost": 0
+  },
+  "Jamal Cain": {
+    "team": "ORL",
+    "avg_pts": 12.0,
+    "home_pts": 12.0,
+    "away_pts": 12.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Kevon Harris": {
+    "team": "ORL",
+    "avg_pts": 12.0,
+    "home_pts": 12.0,
+    "away_pts": 12.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Tristan da Silva": {
+    "team": "ORL",
+    "avg_pts": 12.0,
+    "home_pts": 12.0,
+    "away_pts": 12.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Cole Anthony": {
+    "team": "MEM",
+    "avg_pts": 12.0,
+    "home_pts": 12.0,
+    "away_pts": 12.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
+  },
+  "Gary Harris": {
+    "team": "ORL",
+    "avg_pts": 12.0,
+    "home_pts": 12.0,
+    "away_pts": 12.0,
+    "games": 10,
+    "consistency": 0.75,
+    "home_boost": 0
   }
 }
