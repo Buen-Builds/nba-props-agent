@@ -61,17 +61,20 @@ persistent actor NBAAgent {
   };
 
   func stat_bonus(stat: Text) : Float {
-    if      (Text.contains(stat, #text "PRA"))        { 1.30 }
-    else if (Text.contains(stat, #text "Rebs+Asts"))  { 1.28 }
-    else if (Text.contains(stat, #text "Pts+Rebs"))   { 1.20 }
-    else if (Text.contains(stat, #text "Rebounds"))   { 1.18 }
-    else if (Text.contains(stat, #text "Blocks"))     { 1.15 }
-    else if (Text.contains(stat, #text "Dunks"))      { 1.12 }
-    else if (Text.contains(stat, #text "Points"))     { 1.05 }
-    else if (Text.contains(stat, #text "3PTM"))       { 0.90 }
-    else if (Text.contains(stat, #text "FTM"))        { 0.80 }
-    else if (Text.contains(stat, #text "Steals"))     { 0.75 }
-    else                                              { 1.0  }
+    if      (Text.contains(stat, #text "PRA"))             { 1.30 }
+    else if (Text.contains(stat, #text "Rebs+Asts"))       { 1.28 }
+    else if (Text.contains(stat, #text "PF_TO"))           { 1.25 }
+    else if (Text.contains(stat, #text "Pts+Rebs"))        { 1.20 }
+    else if (Text.contains(stat, #text "Rebounds"))        { 1.18 }
+    else if (Text.contains(stat, #text "Personal Fouls"))  { 1.18 }
+    else if (Text.contains(stat, #text "Blocks"))          { 1.15 }
+    else if (Text.contains(stat, #text "Turnovers"))       { 1.15 }
+    else if (Text.contains(stat, #text "Dunks"))           { 1.12 }
+    else if (Text.contains(stat, #text "Points"))          { 1.05 }
+    else if (Text.contains(stat, #text "3PTM"))            { 0.90 }
+    else if (Text.contains(stat, #text "FTM"))             { 0.80 }
+    else if (Text.contains(stat, #text "Steals"))          { 0.75 }
+    else                                                   { 1.0  }
   };
 
   func calc(h: Float, e: Float, ep: Float, b: Float, o: Int, stat: Text) : Float {
@@ -112,58 +115,157 @@ persistent actor NBAAgent {
     not Text.contains(s, #text "pra")
   };
 
-  func load_props() : [Prop] {[
-    mp("Coby White",         "CHA", "Points",     10.5, 15.8, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Brandin Podziemski", "GSW", "Points",     10.0, 14.2, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Devin Booker",       "PHX", "Points",     22.0, 30.8, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("LaMelo Ball",        "CHA", "Points",     18.0, 30.7, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Anthony Black",      "ORL", "Points",      7.0, 10.2, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Brandon Miller",     "CHA", "Points",     16.0, 22.0, 1.00, 0.15, -600, "CHA @ ORL", "11:30PM"),
-    mp("Jordan Goodwin",     "PHX", "Points",      5.0,  8.4, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Grayson Allen",      "PHX", "Points",      8.0, 12.8, 0.95, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Jalen Suggs",        "ORL", "Points",     10.0, 14.2, 0.86, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Desmond Bane",       "ORL", "Points",     15.0, 20.5, 0.80, 0.15, -479, "CHA @ ORL", "11:30PM"),
-    mp("Jalen Green",        "PHX", "Points",     14.5, 20.8, 0.84, 0.15, -392, "GSW @ PHX", "02:00AM"),
-    mp("Draymond Green",     "GSW", "Points",      5.0,  8.2, 0.83, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Miles Bridges",      "CHA", "Points",     10.0, 14.8, 0.83, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Royce O'Neale",      "PHX", "Points",      5.0,  7.8, 0.80, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Ryan Kalkbrenner",   "CHA", "Rebounds",    3.0,  5.8, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Grayson Allen",      "PHX", "Rebounds",    2.0,  3.8, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Kon Knueppel",       "CHA", "Rebounds",    4.0,  5.8, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("De'Anthony Melton",  "GSW", "Rebounds",    3.0,  4.8, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Kristaps Porzingis", "ORL", "Rebounds",    5.0,  7.2, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("LaMelo Ball",        "CHA", "Rebounds",    4.0,  5.8, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Anthony Black",      "ORL", "Rebounds",    2.0,  3.8, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Jalen Suggs",        "ORL", "Rebounds",    3.0,  4.8, 0.83, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Miles Bridges",      "CHA", "Rebounds",    5.0,  7.2, 0.83, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Dillon Brooks",      "PHX", "Rebounds",    4.0,  6.2, 0.83, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Stephen Curry",      "GSW", "Rebounds",    4.0,  6.2, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Goga Bitadze",       "ORL", "Rebounds",    4.0,  6.2, 0.88, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Gui Santos",         "GSW", "Rebounds",    4.0,  5.8, 0.86, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("LaMelo Ball",        "CHA", "Rebs+Asts",   9.5, 13.2, 1.00, 0.15, -600, "CHA @ ORL", "11:30PM"),
-    mp("Draymond Green",     "GSW", "Rebs+Asts",   9.5, 13.8, 1.00, 0.15, -600, "GSW @ PHX", "02:00AM"),
-    mp("Paolo Banchero",     "ORL", "Rebs+Asts",   9.5, 14.8, 1.00, 0.15, -600, "CHA @ ORL", "11:30PM"),
-    mp("Devin Booker",       "PHX", "Rebs+Asts",   7.5, 11.0, 1.00, 0.15, -550, "GSW @ PHX", "02:00AM"),
-    mp("Kon Knueppel",       "CHA", "Rebs+Asts",   5.5,  7.8, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Jalen Suggs",        "ORL", "Rebs+Asts",   6.5,  9.8, 1.00, 0.15, -750, "CHA @ ORL", "11:30PM"),
-    mp("Anthony Black",      "ORL", "Rebs+Asts",  10.5, 14.2, 1.00, 0.15, -550, "CHA @ ORL", "11:30PM"),
-    mp("Stephen Curry",      "GSW", "Rebs+Asts",  24.5, 31.2, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("LaMelo Ball",        "CHA", "Rebs+Asts",  24.5, 30.7, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Jalen Green",        "PHX", "PRA",        19.5, 27.8, 1.00, 0.15, -800, "GSW @ PHX", "02:00AM"),
-    mp("Coby White",         "CHA", "PRA",        13.5, 19.8, 1.00, 0.15, -450, "CHA @ ORL", "11:30PM"),
-    mp("Jordan Goodwin",     "PHX", "PRA",        10.5, 14.5, 0.85, 0.15, -440, "GSW @ PHX", "02:00AM"),
-    mp("Brandon Miller",     "CHA", "PRA",        22.5, 29.8, 0.75, 0.15, -420, "CHA @ ORL", "11:30PM"),
-    mp("LaMelo Ball",        "CHA", "PRA",        28.5, 42.0, 0.88, 0.15, -600, "CHA @ ORL", "11:30PM"),
-    mp("Dillon Brooks",      "PHX", "Pts+Rebs",   14.5, 21.2, 1.00, 0.15, -725, "GSW @ PHX", "02:00AM"),
-    mp("Grayson Allen",      "PHX", "Pts+Rebs",    9.5, 13.8, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Gui Santos",         "GSW", "Points",      7.5, 10.8, 0.80, 0.15, -675, "GSW @ PHX", "02:00AM"),
-    mp("Stephen Curry",      "GSW", "3PTM",        2.5,  4.2, 0.80, 0.15, -423, "GSW @ PHX", "02:00AM"),
-    mp("Royce O'Neale",      "PHX", "3PTM",        1.0,  2.2, 0.80, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Jordan Goodwin",     "PHX", "3PTM",        1.0,  2.1, 1.00, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Dillon Brooks",      "PHX", "3PTM",        2.0,  3.2, 0.83, 0.15, -500, "GSW @ PHX", "02:00AM"),
-    mp("Brandon Miller",     "CHA", "3PTM",        2.0,  3.2, 1.00, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Franz Wagner",       "ORL", "Rebs+Asts",   2.0,  3.8, 0.82, 0.15, -500, "CHA @ ORL", "11:30PM"),
-    mp("Kristaps Porzingis", "ORL", "Rebs+Asts",   2.0,  3.8, 0.80, 0.15, -500, "CHA @ ORL", "11:30PM")
+      func load_props() : [Prop] {[
+    mp("Josh Hart", "???", "PRA", 26.5, 29.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dyson Daniels", "???", "PRA", 21.5, 24.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jonathan Kuminga", "???", "PRA", 19.5, 22.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Deandre Ayton", "???", "PRA", 21.5, 24.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jabari Smith", "HOU", "PRA", 18.5, 23.0, 0.85, 0.15, -500, "HOU @ LAL", "08:30PM"),
+    mp("Luke Kennard", "???", "PRA", 21.5, 24.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Marcus Smart", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Rui Hachimura", "???", "PRA", 19.5, 22.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tari Eason", "HOU", "PRA", 12.0, 16.5, 0.88, 0.20, -500, "HOU @ LAL", "08:30PM"),
+    mp("Jaxson Hayes", "???", "PRA", 12.0, 13.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jake LaRavia", "LAL", "PRA", 7.5, 10.5, 0.87, 0.20, -500, "HOU @ LAL", "08:30PM"),
+    mp("Jarred Vanderbilt", "???", "PRA", 7.5, 8.5, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Josh Okogie", "???", "PRA", 11.5, 13.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Clint Capela", "???", "PRA", 7.5, 8.5, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Aaron Holiday", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dorian Finney-Smith", "???", "PRA", 5.5, 6.2, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jayson Tatum", "BOS", "PRA", 38.5, 47.8, 0.8, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Tyrese Maxey", "PHI", "PRA", 35.5, 40.1, 0.72, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Jaylen Brown", "BOS", "PRA", 36.0, 40.7, 0.68, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Paul George", "PHI", "PRA", 28.5, 32.2, 0.5, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Derrick White", "BOS", "PRA", 22.5, 25.4, 0.86, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Kelly Oubre", "???", "PRA", 20.5, 23.2, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Payton Pritchard", "BOS", "PRA", 21.5, 24.3, 0.67, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Andre Drummond", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Neemias Queta", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Quentin Grimes", "PHI", "PRA", 14.5, 16.4, 1.0, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Nikola Vučević", "???", "PRA", 15.5, 17.5, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Sam Hauser", "???", "PRA", 12.0, 13.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Baylor Scheierman", "???", "PRA", 10.5, 11.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dominick Barlow", "???", "PRA", 6.5, 7.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Adem Bona", "???", "PRA", 4.5, 5.1, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Shai Gilgeous-Alexander", "OKC", "PRA", 41.5, 45.0, 0.74, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Devin Booker", "PHX", "PRA", 34.5, 37.8, 0.76, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Chet Holmgren", "OKC", "PRA", 26.5, 29.9, 1.0, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Jalen Williams", "OKC", "PRA", 27.5, 31.1, 1.0, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Dillon Brooks", "PHX", "PRA", 21.5, 24.2, 0.73, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Isaiah Hartenstein", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jordan Goodwin", "PHX", "PRA", 16.5, 18.6, 0.8, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Ajay Mitchell", "???", "PRA", 16.5, 18.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Grayson Allen", "PHX", "PRA", 12.5, 14.1, 0.8, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Cason Wallace", "???", "PRA", 10.5, 11.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Luguentz Dort", "???", "PRA", 11.5, 13.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Royce O'Neale", "PHX", "PRA", 11.5, 13.0, 0.8, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Cade Cunningham", "DET", "PRA", 42.5, 48.0, 0.68, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jalen Duren", "DET", "PRA", 34.5, 39.0, 0.6, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Paolo Banchero", "ORL", "PRA", 35.5, 41.0, 0.67, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Desmond Bane", "ORL", "PRA", 27.5, 31.1, 0.88, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Franz Wagner", "ORL", "PRA", 24.5, 27.7, 0.71, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jalen Suggs", "ORL", "PRA", 23.5, 26.0, 0.75, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tobias Harris", "???", "PRA", 21.5, 24.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Ausar Thompson", "???", "PRA", 17.5, 19.8, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Duncan Robinson", "???", "PRA", 15.5, 17.5, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Wendell Carter", "ORL", "PRA", 18.5, 20.0, 0.75, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Anthony Black", "ORL", "PRA", 15.5, 17.5, 0.5, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Daniss Jenkins", "???", "PRA", 12.5, 14.1, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Isaiah Stewart", "???", "PRA", 11.5, 13.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tristan Silva", "???", "PRA", 7.5, 8.5, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Victor Wembanyama", "SAS", "PRA", 43.5, 49.2, 0.54, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Deni Avdija", "POR", "PRA", 37.5, 46.2, 0.65, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Stephon Castle", "SAS", "PRA", 30.5, 34.5, 0.75, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("De'Aaron Fox", "SAS", "PRA", 27.5, 31.1, 0.9, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Donovan Clingan", "POR", "PRA", 23.5, 22.0, 0.75, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Jrue Holiday", "POR", "PRA", 25.5, 22.0, 1.0, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Toumani Camara", "POR", "PRA", 18.5, 20.9, 0.5, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Devin Vassell", "SAS", "PRA", 17.5, 19.8, 1.0, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Keldon Johnson", "???", "PRA", 16.5, 18.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Scoot Henderson", "POR", "PRA", 15.0, 22.0, 0.8, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Shaedon Sharpe", "POR", "PRA", 14.5, 16.4, 0.75, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Julian Champagnie", "SAS", "PRA", 16.5, 18.6, 0.67, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Jerami Grant", "POR", "PRA", 14.5, 16.4, 0.89, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Dylan Harper", "SAS", "PRA", 14.5, 16.4, 0.0, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Robert Williams", "???", "PRA", 11.5, 13.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Harrison Barnes", "???", "PRA", 11.5, 13.0, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Luke Kornet", "???", "PRA", 8.5, 9.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jakob Poeltl", "???", "PRA", 16.5, 18.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Max Strus", "???", "PRA", 14.5, 16.4, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dean Wade", "???", "PRA", 9.5, 10.7, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jaden McDaniels", "???", "PRA", 21.5, 24.3, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Rudy Gobert", "???", "PRA", 23.5, 26.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Naz Reid", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Christian Braun", "???", "PRA", 18.5, 20.9, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Donte DiVincenzo", "???", "PRA", 16.5, 18.6, 0.85, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dyson Daniels", "???", "Rebs+Asts", 16.5, 18.6, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Josh Hart", "???", "Rebs+Asts", 17.5, 19.8, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jonathan Kuminga", "???", "Rebs+Asts", 7.5, 8.5, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Mitchell Robinson", "???", "Rebs+Asts", 5.5, 6.2, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Miles McBride", "???", "Rebs+Asts", 4.5, 5.1, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Deandre Ayton", "???", "Rebs+Asts", 8.5, 9.6, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Luke Kennard", "???", "Rebs+Asts", 8.0, 9.0, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jabari Smith", "HOU", "Rebs+Asts", 7.0, 9.8, 0.87, 0.15, -500, "HOU @ LAL", "08:30PM"),
+    mp("Marcus Smart", "???", "Rebs+Asts", 7.0, 7.9, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tari Eason", "HOU", "Rebs+Asts", 4.5, 6.8, 0.88, 0.25, -500, "HOU @ LAL", "08:30PM"),
+    mp("Jake LaRavia", "LAL", "Rebs+Asts", 5.5, 7.8, 0.87, 0.20, -500, "HOU @ LAL", "08:30PM"),
+    mp("Josh Okogie", "???", "Rebs+Asts", 5.5, 6.2, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Rui Hachimura", "???", "Rebs+Asts", 3.5, 4.0, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jaxson Hayes", "???", "Rebs+Asts", 5.0, 5.6, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jarred Vanderbilt", "???", "Rebs+Asts", 3.5, 4.0, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Clint Capela", "???", "Rebs+Asts", 4.5, 5.1, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jayson Tatum", "BOS", "Rebs+Asts", 14.5, 13.2, 0.8, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Andre Drummond", "???", "Rebs+Asts", 11.5, 13.0, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jaylen Brown", "BOS", "Rebs+Asts", 10.5, 11.9, 0.68, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Neemias Queta", "???", "Rebs+Asts", 9.5, 10.7, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tyrese Maxey", "PHI", "Rebs+Asts", 9.5, 10.7, 0.72, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Derrick White", "BOS", "Rebs+Asts", 8.5, 9.6, 0.86, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Paul George", "PHI", "Rebs+Asts", 9.0, 10.2, 0.5, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Payton Pritchard", "BOS", "Rebs+Asts", 7.5, 8.5, 0.67, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Nikola Vučević", "???", "Rebs+Asts", 6.5, 7.3, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Kelly Oubre", "???", "Rebs+Asts", 5.5, 6.2, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Quentin Grimes", "PHI", "Rebs+Asts", 4.5, 5.1, 1.0, 0.20, -500, "PHI @ BOS", "05:00PM"),
+    mp("Sam Hauser", "???", "Rebs+Asts", 4.5, 5.1, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Baylor Scheierman", "???", "Rebs+Asts", 4.5, 5.1, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dominick Barlow", "???", "Rebs+Asts", 2.5, 2.8, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Chet Holmgren", "OKC", "Rebs+Asts", 10.5, 11.9, 1.0, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Devin Booker", "PHX", "Rebs+Asts", 10.5, 11.0, 0.76, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Isaiah Hartenstein", "???", "Rebs+Asts", 10.5, 11.9, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Shai Gilgeous-Alexander", "OKC", "Rebs+Asts", 10.5, 9.8, 0.74, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Jalen Williams", "OKC", "Rebs+Asts", 9.5, 10.7, 1.0, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Jordan Goodwin", "PHX", "Rebs+Asts", 6.5, 7.3, 0.8, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Ajay Mitchell", "???", "Rebs+Asts", 6.0, 6.8, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Royce O'Neale", "PHX", "Rebs+Asts", 5.5, 6.2, 0.8, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Cason Wallace", "???", "Rebs+Asts", 4.0, 4.5, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dillon Brooks", "PHX", "Rebs+Asts", 5.0, 7.2, 0.73, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Luguentz Dort", "???", "Rebs+Asts", 3.5, 4.0, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Grayson Allen", "PHX", "Rebs+Asts", 3.5, 4.0, 0.8, 0.20, -500, "PHX @ OKC", "07:30PM"),
+    mp("Cade Cunningham", "DET", "Rebs+Asts", 16.0, 18.1, 0.68, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jalen Duren", "DET", "Rebs+Asts", 14.5, 16.4, 0.6, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Paolo Banchero", "ORL", "Rebs+Asts", 12.5, 14.8, 0.67, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tobias Harris", "???", "Rebs+Asts", 6.5, 7.3, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Ausar Thompson", "???", "Rebs+Asts", 8.0, 9.0, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Desmond Bane", "ORL", "Rebs+Asts", 6.5, 7.3, 0.88, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Jalen Suggs", "ORL", "Rebs+Asts", 9.0, 11.2, 0.75, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Wendell Carter", "ORL", "Rebs+Asts", 7.5, 12.0, 0.75, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Franz Wagner", "ORL", "Rebs+Asts", 6.5, 7.3, 0.71, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Anthony Black", "ORL", "Rebs+Asts", 5.5, 6.2, 0.5, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Daniss Jenkins", "???", "Rebs+Asts", 5.0, 5.6, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Isaiah Stewart", "???", "Rebs+Asts", 4.5, 5.1, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Duncan Robinson", "???", "Rebs+Asts", 4.0, 4.5, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Tristan Silva", "???", "Rebs+Asts", 2.5, 2.8, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Victor Wembanyama", "SAS", "Rebs+Asts", 15.5, 17.5, 0.54, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Deni Avdija", "POR", "Rebs+Asts", 13.5, 14.8, 0.65, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Donovan Clingan", "POR", "Rebs+Asts", 13.0, 18.2, 0.75, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Stephon Castle", "SAS", "Rebs+Asts", 13.0, 14.7, 0.75, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("De'Aaron Fox", "SAS", "Rebs+Asts", 9.5, 10.7, 0.9, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Jrue Holiday", "POR", "Rebs+Asts", 9.5, 9.2, 1.0, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Devin Vassell", "SAS", "Rebs+Asts", 5.5, 6.2, 1.0, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Toumani Camara", "POR", "Rebs+Asts", 6.5, 7.3, 0.5, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Julian Champagnie", "SAS", "Rebs+Asts", 6.5, 7.3, 0.67, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Robert Williams", "???", "Rebs+Asts", 6.5, 7.3, 0.87, 0.20, -500, "ORL @ DET", "10:30PM"),
+    mp("Dylan Harper", "SAS", "Rebs+Asts", 5.5, 6.2, 0.0, 0.20, -500, "POR @ SAS", "01:00AM"),
+    mp("Scoot Henderson", "POR", "Rebs+Asts", 5.0, 8.4, 0.8, 0.20, -500, "POR @ SAS", "01:00AM"),
   ]};
 
   public func fetch_injuries() : async Text {
@@ -218,8 +320,9 @@ persistent actor NBAAgent {
     let seen = Buffer.Buffer<Text>(20);
     let out  = Buffer.Buffer<Prop>(20);
     for (p in ps.vals()) {
-      if (not Buffer.contains<Text>(seen, p.player, Text.equal)) {
-        seen.add(p.player); out.add(p);
+      let key = p.player # "|" # p.stat;
+      if (not Buffer.contains<Text>(seen, key, Text.equal)) {
+        seen.add(key); out.add(p);
       };
     };
     Buffer.toArray(out)
